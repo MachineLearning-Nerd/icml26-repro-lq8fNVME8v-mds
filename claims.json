@@ -1,0 +1,8 @@
+{
+  "lq8fNVME8v": [
+    {"text": "Minimum-distance summaries provide a plug-in robust neural posterior estimation method that adapts test-time summaries independently of pretrained NPE using maximum mean discrepancy.", "status": "unverified"},
+    {"text": "The algorithm is implemented efficiently with random Fourier feature approximations, yielding a lightweight, model-free test-time adaptation procedure.", "status": "unverified"},
+    {"text": "The method demonstrates substantial robustness gains with minimal additional overhead.", "status": "unverified"},
+    {"text": "Theoretical guarantees for the robustness of the algorithm are provided.", "status": "unverified"}
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "source_theorems": {
+    "important_boundary": "Theorem 4.1 is local/infinitesimal, not global posterior robustness; Theorem 4.2 does not cover decoder/NPE approximation error.",
+    "theorem_4_1": "Infinitesimal KL stability under assumptions 1-10 in Appendix A.1.",
+    "theorem_4_2": "Consistency transfer under a bounded characteristic kernel, continuity, and strong identifiability."
+  },
+  "theorem_4_1_special_case": {
+    "analytic_KL_derivative_at_epsilon_zero": 0.0,
+    "analytic_sup_abs_summary_influence_over_y_grid": 1.575812391238556,
+    "grid": [
+      -50.0,
+      50.0,
+      20001
+    ],
+    "interpretation": "Bounded summary influence and KL/epsilon -> 0 numerically in this regular Gaussian special case.",
+    "max_kl_over_epsilon_by_epsilon": {
+      "1e-02": 1.2625929291602669,
+      "1e-03": 0.12406538826146586,
+      "1e-04": 0.01238738159765737
+    },
+    "model": "P_x|s = Normal(s,1), Q = Normal(0,1), RBF gamma=0.5, point-mass Huber contamination",
+    "y_at_sup_abs_influence": -1.4149999999999991
+  },
+  "theorem_4_2_special_case": {
+    "final_mds_posterior_rms_radius": 0.0455683260916302,
+    "initial_mds_posterior_rms_radius": 0.4659525769912868,
+    "interpretation": "Posterior radius contracts toward zero as N increases; this is a numerical special case, not a proof of the general theorem.",
+    "log_log_slope": -0.5074428753415307,
+    "model": "Correctly specified Normal location model, exact Gaussian predictive MMD, RBF gamma=0.5",
+    "n_values": [
+      10,
+      30,
+      100,
+      300,
+      1000
+    ],
+    "replicates_per_n": 300
+  }
+}

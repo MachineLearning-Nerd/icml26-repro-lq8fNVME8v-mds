@@ -1,0 +1,48 @@
+{
+  "adapter_gamma": 0.10986689759497419,
+  "calibrated_tau": 0.003726771811489015,
+  "design": {
+    "calibration_alpha": 0.05,
+    "calibration_fraction": 0.05,
+    "contamination": "one-sided Normal(theta+8, 1) replacing epsilon*N observations",
+    "device": "cpu",
+    "epsilon_levels": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5
+    ],
+    "lbfgs_max_steps": 200,
+    "n_observations_per_dataset": 100,
+    "n_train_datasets": 2000,
+    "official_module": "source/official-repo/src/tt_sbi/tta/rff.py",
+    "prior_variance": 4.0,
+    "regressor_epochs": 50,
+    "regressor_hidden_dims": [
+      256,
+      256
+    ],
+    "rff_dimension": 512,
+    "test_seeds": [
+      1000,
+      1049
+    ],
+    "test_trials_per_level": 50,
+    "train_seed": 42
+  },
+  "final_regressor_mse": 2.5299323169747368e-06,
+  "headline": {
+    "clean_gate_pass_rate": 1.0,
+    "clean_rmse_delta": 8.90399698416644e-11,
+    "epsilon_0p5_rmse_reduction_pct": 4.787768185186102,
+    "mean_rmse_reduction_pct_eps_0p1_to_0p4": 91.40844079367253,
+    "median_test_time_ms_nonzero_contamination": 7.11321400012821,
+    "minimum_rmse_reduction_pct_eps_0p1_to_0p4": 86.0722712342806,
+    "minimum_win_rate_eps_0p1_to_0p4": 1.0,
+    "p95_test_time_ms_nonzero_contamination": 14.595631230622523
+  },
+  "offline_fit_seconds": 4.929165884153917,
+  "scope_boundary": "Controlled conjugate-Gaussian CPU reproduction of the core RFF-MDS mechanism; not a rerun of every OUP, SIR, cryo-EM, NPE-PFN, or comparator experiment."
+}

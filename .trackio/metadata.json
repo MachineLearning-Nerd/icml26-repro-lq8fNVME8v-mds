@@ -1,0 +1,148 @@
+{
+  "space_id": "DineshAI/lq8fNVME8v",
+  "emoji": "🎯",
+  "created_at": "2026-07-16T15:51:54+00:00",
+  "last_page": "reproduction-protocol-artifacts-and-hashes",
+  "local_artifacts": [
+    "minimum-distance-summaries-repro/minimum-distance-summaries-cpu-reproduction:v0"
+  ],
+  "local_path_artifacts": [
+    {
+      "path": "outputs/full/consistency_trials.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/consistency_trials.csv",
+      "size": 133042,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/gaussian_trials.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/gaussian_trials.csv",
+      "size": 104073,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/robustness_influence_finite_difference.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/robustness_influence_finite_difference.csv",
+      "size": 97833,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/gaussian_aggregate.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/gaussian_aggregate.csv",
+      "size": 1633,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/consistency_aggregate.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/consistency_aggregate.csv",
+      "size": 530,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/neural_upgrade/neural_oup_trials.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/neural_upgrade/neural_oup_trials.csv",
+      "size": 91529,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/neural_upgrade/oup_neural_posterior.pt",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/neural_upgrade/oup_neural_posterior.pt",
+      "size": 74581,
+      "artifact_type": "model"
+    },
+    {
+      "path": "outputs/neural_upgrade/neural_gaussian_trials.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/neural_upgrade/neural_gaussian_trials.csv",
+      "size": 34437,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/neural_upgrade/gaussian_neural_posterior.pt",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/neural_upgrade/gaussian_neural_posterior.pt",
+      "size": 22245,
+      "artifact_type": "model"
+    },
+    {
+      "path": "outputs/neural_upgrade/oup_neural_training.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/neural_upgrade/oup_neural_training.csv",
+      "size": 5873,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/neural_upgrade/gaussian_neural_training.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/neural_upgrade/gaussian_neural_training.csv",
+      "size": 3434,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/neural_upgrade/neural_oup_aggregate.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/neural_upgrade/neural_oup_aggregate.csv",
+      "size": 671,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/neural_upgrade/neural_gaussian_aggregate.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/neural_upgrade/neural_gaussian_aggregate.csv",
+      "size": 553,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/neural_oup_trials.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/neural_oup_trials.csv",
+      "size": 91529,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/oup_neural_posterior.pt",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/oup_neural_posterior.pt",
+      "size": 74581,
+      "artifact_type": "model"
+    },
+    {
+      "path": "outputs/full/neural_gaussian_trials.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/neural_gaussian_trials.csv",
+      "size": 34437,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/gaussian_neural_posterior.pt",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/gaussian_neural_posterior.pt",
+      "size": 22245,
+      "artifact_type": "model"
+    },
+    {
+      "path": "outputs/full/oup_neural_training.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/oup_neural_training.csv",
+      "size": 5873,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/gaussian_neural_training.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/gaussian_neural_training.csv",
+      "size": 3434,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/neural_oup_aggregate.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/neural_oup_aggregate.csv",
+      "size": 671,
+      "artifact_type": "dataset"
+    },
+    {
+      "path": "outputs/full/neural_gaussian_aggregate.csv",
+      "abs_path": "/home/dineshai/Drives/Code/AllCode/ReproduceICML/papers/icml26-repro-lq8fNVME8v-mds/outputs/full/neural_gaussian_aggregate.csv",
+      "size": 553,
+      "artifact_type": "dataset"
+    }
+  ],
+  "paper": {
+    "arxiv_id": "2602.09161"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-lq8fNVME8v"
+  ],
+  "autosync": true,
+  "private": false,
+  "local_dashboards": {},
+  "artifacts_bucket": "DineshAI/lq8fNVME8v-artifacts"
+}

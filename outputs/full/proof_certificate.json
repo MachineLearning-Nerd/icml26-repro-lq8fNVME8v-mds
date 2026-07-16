@@ -1,0 +1,179 @@
+{
+  "anchor_lines": {
+    "argmin_contraction": 791,
+    "bounded_kernel": 537,
+    "consistency_assumptions": 686,
+    "consistency_part_1": 744,
+    "consistency_part_2": 761,
+    "consistency_part_3": 775,
+    "consistency_part_4": 794,
+    "consistency_statement": 368,
+    "contamination_path": 334,
+    "derivative_bound": 540,
+    "dimension_sum_bound": 601,
+    "exact_conditionals_boundary": 720,
+    "influence_definition": 562,
+    "influence_formula": 580,
+    "kernel_metrizes": 706,
+    "mds_argmin": 726,
+    "nonsingular_hessian": 542,
+    "population_mds": 326,
+    "rob2": 625,
+    "rob3_kl_stability": 635,
+    "rob4_bounded_influence": 646,
+    "robustness_assumptions": 497,
+    "robustness_quotient_conclusion": 678,
+    "robustness_statement": 337,
+    "summary_likelihood_mvt": 613,
+    "two_weak_limits": 732
+  },
+  "assumption_counts": {
+    "consistency": 4,
+    "robustness": 10
+  },
+  "audit_kind": "dimension-general proof dependency and inequality audit; not a mechanized proof and not an empirical substitute",
+  "dependency_steps": [
+    {
+      "audited_inference": "The theorem studies the one-sided path through the population MDS functional, not finite-sample RFF optimization.",
+      "depends_on": [],
+      "id": "R0",
+      "lines": [
+        326,
+        334
+      ],
+      "name": "Define the population perturbation path",
+      "premises": "An MMD minimizer exists; Q_eps,y=(1-eps)Q+eps delta_y."
+    },
+    {
+      "audited_inference": "IF(y;Q)=M^{-1} grad_s xi. Dominated differentiation and the triangle inequality give ||grad_s xi|| <= 4||k||_infty sum_{i=1}^{d_s} int|partial_i p_s|, a finite bound independent of y.",
+      "depends_on": [
+        "R0"
+      ],
+      "dimension_general": "The bound explicitly sums i=1,...,d_s and never fixes d_s or d_x.",
+      "id": "R1",
+      "lines": [
+        537,
+        601
+      ],
+      "name": "Bound the dimension-general MDS influence",
+      "premises": "Assumptions 6-10: bounded kernel; density p_s; C2 summary dependence; integrable coordinate derivatives; nonsingular local Hessian M."
+    },
+    {
+      "audited_inference": "The vector mean-value path remains in S; integrating the gradient bound yields ||Phi_s-Phi_t||_L1(mu) <= k1(s)||s-t|| locally.",
+      "depends_on": [
+        "R1"
+      ],
+      "id": "R2",
+      "lines": [
+        613,
+        625
+      ],
+      "name": "Transfer summary perturbation to likelihood perturbation",
+      "premises": "Assumptions 3-5: Phi_s differentiable in vector s, locally integrable dominating gradient, convex S."
+    },
+    {
+      "audited_inference": "For sufficiently small eps, KL/eps <= k1*k2*||s*(Q_eps,y)-s*(Q)||/eps; R1 makes the right side uniformly finite in y.",
+      "depends_on": [
+        "R2"
+      ],
+      "id": "R3",
+      "lines": [
+        635,
+        678
+      ],
+      "name": "Transfer likelihood perturbation to posterior KL",
+      "premises": "Assumptions 1-2 put the posterior in normalized exp(-Phi_s) form and normalize ess inf Phi_s=0; imported Sprungk local KL stability applies when the L1 perturbation is <=1."
+    },
+    {
+      "audited_inference": "For every bounded continuous h on R^{d_x}, continuous mapping plus dominated convergence gives E_{predictive(s_N)}h -> E_{P_theta0}h, which is weak predictive convergence.",
+      "depends_on": [],
+      "id": "C1",
+      "lines": [
+        732,
+        744
+      ],
+      "name": "Original-posterior consistency implies predictive consistency",
+      "premises": "P(theta|s_N) => delta_theta0; empirical law => P_x|theta0 almost surely; G_theta(u) continuous in theta."
+    },
+    {
+      "audited_inference": "Both predictive(s_N) and the empirical measure approach P_theta0; the MMD triangle inequality gives B_N=MMD(predictive(s_N),P_hat_N)->0.",
+      "depends_on": [
+        "C1"
+      ],
+      "id": "C2",
+      "lines": [
+        706,
+        761
+      ],
+      "name": "Convert weak convergence to vanishing MMD",
+      "premises": "The kernel is bounded, continuous and integrally strictly positive definite, so the imported metrization result applies."
+    },
+    {
+      "audited_inference": "A_N=MMD(predictive(s*_N),P_hat_N) <= B_N by optimality; squeeze gives A_N->0, then a second triangle inequality gives predictive(s*_N)=>P_theta0.",
+      "depends_on": [
+        "C2"
+      ],
+      "id": "C3",
+      "lines": [
+        726,
+        791
+      ],
+      "name": "Use minimization to transfer convergence to MDS",
+      "premises": "The MDS argmin exists."
+    },
+    {
+      "audited_inference": "Taking T_N=P(theta|s*_N), predictive convergence from C3 yields P(theta|s*_N)=>delta_theta0.",
+      "depends_on": [
+        "C3"
+      ],
+      "id": "C4",
+      "lines": [
+        775,
+        794
+      ],
+      "name": "Apply mixture identifiability",
+      "premises": "Assumption 4: convergence of predictive mixtures to P_x|theta0 forces their mixing measures to delta_theta0."
+    }
+  ],
+  "independent_audit_findings": [
+    {
+      "finding": "The displayed gradient bound writes sup k; the triangle-inequality derivation requires sup |k|. Assumption 6 says the kernel is bounded, so replacing this with ||k||_infinity is licensed and adds no assumption.",
+      "location": 601,
+      "severity": "notation_only"
+    },
+    {
+      "finding": "One intermediate TeX expression drops the star from s*(Q_eps,y); the immediately surrounding equations use s* and the substitution is unambiguous.",
+      "location": 656,
+      "severity": "typographical"
+    },
+    {
+      "finding": "The theorem writes a derivative while the appendix bounds a one-sided KL difference quotient. Identifying them uses KL(0)=0 and existence of the influence-function limit invoked at lines 562-580; the certificate does not claim a stronger two-sided/global derivative result.",
+      "location": [
+        341,
+        565,
+        680
+      ],
+      "severity": "interpretive"
+    },
+    {
+      "finding": "The consistency proof explicitly excludes NPE/decoder approximation error; it certifies exact regular conditionals only.",
+      "location": 720,
+      "severity": "scope"
+    }
+  ],
+  "logical_result": {
+    "consistency": "PASS: every link C1->C2->C3->C4 is present; the final step depends essentially on the stated strong identifiability assumption.",
+    "overclaim_guard": "This certificate checks the pinned paper's proof dependency chain. It does not validate imported theorems beyond their stated use, does not cover learned approximation error, and does not imply global robustness.",
+    "robustness": "PASS: every link R0->R1->R2->R3 is present and assumption-licensed after the harmless sup|k| notation repair."
+  },
+  "scope": {
+    "consistency": "Exact regular conditionals, arbitrary finite d_x, bounded characteristic-kernel metrization, continuous simulator, argmin existence and strong mixture identifiability.",
+    "robustness": "Population MDS, local/infinitesimal point-mass Huber contamination, arbitrary finite d_s and d_x under ten stated assumptions."
+  },
+  "source": {
+    "line_count": 1197,
+    "path": "source/arxiv/arxiv_main.tex",
+    "sha256": "ff81fd973e3bcba86fb23e9a0c102ec88e240f62361315c7875de54e29ea4fd2"
+  },
+  "status": "PASS"
+}

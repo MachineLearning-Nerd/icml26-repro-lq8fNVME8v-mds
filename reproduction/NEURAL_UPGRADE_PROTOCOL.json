@@ -1,0 +1,79 @@
+{
+  "frozen_before_full_run": "2026-07-16T00:46:41Z",
+  "purpose": "Directly address the judge's two remaining boundaries: replace the conjugate-posterior proxy with an actually trained and frozen neural posterior, and add a second paper-named simulation mechanism beyond Gaussian location.",
+  "prior_smoke_retained": {
+    "scope": "Functionality-only reduced smoke: 1,000 training rows, 20 OUP trajectories, 64 RFFs, four tests per level.",
+    "summary_sha256": "87f8aefc9610f337a8e4378882eee3ddd3820a7c6865a8981965fc21a6b08fa5",
+    "checksums_sha256": "62659eecc8d405877c209508dbbf4c0f4dbd5439cc103d0f85fdd087491d52f1",
+    "headline": {
+      "gaussian_mean_rmse_reduction_pct": 91.75635688838807,
+      "oup_mean_rmse_reduction_pct": 53.506372075567526,
+      "oup_levels_improved": "4/4"
+    },
+    "selection_rule": "The smoke was used only to validate execution and memory. No full-run seed, threshold, or contamination level was selected from smoke outcomes."
+  },
+  "implementation_sha256_at_freeze": "017574ecd8bb4e58099a67de93be7e6dce13857373c051ba98ab46281e0d2324",
+  "compute": {
+    "device": "cpu",
+    "gpu": false,
+    "mps": false,
+    "paid_api": false,
+    "cloud_job": false,
+    "torch_threads_max": 6
+  },
+  "neural_posterior": {
+    "family": "conditional diagonal Gaussian density network q_phi(theta|summary)",
+    "loss": "conditional negative log likelihood",
+    "test_time_rule": "freeze every learned weight and every normalization statistic before the first contaminated test row",
+    "baseline_and_mds_rule": "query the identical frozen network with the ordinary versus MDS-adapted summary; no retraining, fine-tuning, or calibration on test theta"
+  },
+  "gaussian": {
+    "training_simulations": 20000,
+    "n_observations": 100,
+    "prior_variance": 4.0,
+    "likelihood_variance": 1.0,
+    "network_hidden_width": 64,
+    "maximum_epochs": 200,
+    "early_stop_patience": 30,
+    "seed": 20260716,
+    "evaluation_source": "the prior reproduction's immutable 300 row official-RFF trial table",
+    "evaluation_theta": 0.0,
+    "contamination_epsilons": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5],
+    "trials_per_level": 50
+  },
+  "oup": {
+    "source": "pinned official tt_sbi/tasks/oup.py equations and config",
+    "source_sha256": "a256e686fff9fcc94c2710c48de279e25568420eb6acd495d962753d2fdf0a50",
+    "training_simulations": 10000,
+    "n_trajectories": 100,
+    "n_timesteps": 25,
+    "horizon": 5.0,
+    "clean_variance_scale": 0.1,
+    "contamination_theta": [-0.5, 1.0],
+    "contamination_variance_scale": 0.5,
+    "network_hidden_width": 128,
+    "maximum_epochs": 240,
+    "early_stop_patience": 35,
+    "rff_fit_datasets": 500,
+    "rff_dimension": 512,
+    "rff_regressor_epochs": 60,
+    "test_rows_per_level": 50,
+    "contamination_epsilons": [0.0, 0.1, 0.2, 0.3, 0.4],
+    "seed": 20260716
+  },
+  "frozen_gates": {
+    "actual_neural_posteriors": "both conditional density networks have more than 1,000 trained parameters and saved checkpoints",
+    "frozen_gaussian_npe": "exact tensor-state SHA-256 is unchanged before versus after all test-time adaptations",
+    "frozen_oup_npe": "exact tensor-state SHA-256 is unchanged before versus after all test-time adaptations",
+    "gaussian_clean_calibration": "baseline posterior-mean RMSE at epsilon 0 is below 0.20",
+    "gaussian_all_contamination_levels_improve": "MDS RMSE is lower at each epsilon in {0.1,0.2,0.3,0.4}",
+    "gaussian_mean_robustness_gain_50pct": "mean RMSE reduction over epsilon 0.1 through 0.4 is at least 50 percent",
+    "oup_clean_npe_better_than_prior_scale": "baseline posterior-mean RMSE at epsilon 0 is below 0.75",
+    "oup_majority_contamination_levels_improve": "MDS RMSE is lower at at least three of four nonzero epsilon levels",
+    "oup_mean_contamination_gain_positive": "mean OUP RMSE reduction over nonzero epsilon levels is positive",
+    "paper_scale_rff_dimension": "OUP adapter uses 512 random Fourier features",
+    "official_oup_dimensions": "OUP uses 25 timesteps and 100 trajectories",
+    "cpu_only": true
+  },
+  "retention_and_no_posthoc_rule": "All smoke and full outputs are retained. After the first full-run test response, no seed, architecture, mechanism, contamination level, threshold, or gate may change. A failed full gate remains a reported negative result."
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "title": "Repro - Minimum Distance Summaries for Robust NPE",
+  "emoji": "🎯",
+  "space_id": "DineshAI/lq8fNVME8v",
+  "paper": {
+    "arxiv_id": "2602.09161"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-lq8fNVME8v"
+  ],
+  "updated_at": "2026-07-16T15:54:31+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Repro - Minimum Distance Summaries for Robust NPE",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "00-scored-evidence-summary",
+        "title": "00 - Scored evidence summary",
+        "file": "pages/00-scored-evidence-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-plug-in-mmd-summary-independent-of-npe",
+        "title": "Claim 1 - Plug-in MMD summary independent of NPE",
+        "file": "pages/claim-1-plug-in-mmd-summary-independent-of-npe/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-rff-efficiency-and-lightweight-adaptation",
+        "title": "Claim 2 - RFF efficiency and lightweight adaptation",
+        "file": "pages/claim-2-rff-efficiency-and-lightweight-adaptation/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-robustness-gains-with-low-overhead",
+        "title": "Claim 3 - Robustness gains with low overhead",
+        "file": "pages/claim-3-robustness-gains-with-low-overhead/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-robustness-and-consistency-guarantees",
+        "title": "Claim 4 - Robustness and consistency guarantees",
+        "file": "pages/claim-4-robustness-and-consistency-guarantees/page.md",
+        "children": []
+      },
+      {
+        "slug": "reproduction-protocol-artifacts-and-hashes",
+        "title": "Reproduction protocol, artifacts, and hashes",
+        "file": "pages/reproduction-protocol-artifacts-and-hashes/page.md",
+        "children": []
+      },
+      {
+        "slug": "limitations-and-falsification-attempts",
+        "title": "Limitations and falsification attempts",
+        "file": "pages/limitations-and-falsification-attempts/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 8884,
+  "revision": "1784217271763760846"
+}

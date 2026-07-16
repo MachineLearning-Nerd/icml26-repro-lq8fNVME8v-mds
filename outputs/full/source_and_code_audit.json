@@ -1,0 +1,59 @@
+{
+  "anchors_arxiv_main_tex": {
+    "algorithm_1": 289,
+    "decoder_mean_embedding": 283,
+    "method_definition": 236,
+    "paper_scale_rff_512": 944,
+    "public_implementation": 388,
+    "rff_objective": 283,
+    "test_time_adaptation": 285,
+    "theorem_4_1": 335,
+    "theorem_4_2": 368
+  },
+  "arxiv_id": "2602.09161",
+  "challenge_claims_exact": [
+    {
+      "status": "unverified",
+      "text": "Minimum-distance summaries provide a plug-in robust neural posterior estimation method that adapts test-time summaries independently of pretrained NPE using maximum mean discrepancy."
+    },
+    {
+      "status": "unverified",
+      "text": "The algorithm is implemented efficiently with random Fourier feature approximations, yielding a lightweight, model-free test-time adaptation procedure."
+    },
+    {
+      "status": "unverified",
+      "text": "The method demonstrates substantial robustness gains with minimal additional overhead."
+    },
+    {
+      "status": "unverified",
+      "text": "Theoretical guarantees for the robustness of the algorithm are provided."
+    }
+  ],
+  "official_code_patterns": {
+    "calibrated_gate": true,
+    "conditional_embedding_regression": true,
+    "cpu_device_parameter": true,
+    "lbfgs_test_time": true,
+    "mse_training": true,
+    "sklearn_RBFSampler": true,
+    "strong_wolfe_line_search": true
+  },
+  "openreview_url": "https://openreview.net/forum?id=lq8fNVME8v",
+  "packaging_and_config_caveats": {
+    "metrics_sha256": "495e082d09eb06835c451641f30d1033c102ee14516e210c9eeae5f1cb263291",
+    "package_import_observation": "Importing tt_sbi.tta triggers ncpp -> utils.metrics -> sbibm, but sbibm is absent from pyproject dependencies. The reproduction therefore loads the self-contained official rff.py module directly.",
+    "paper_rff_dimension": 512,
+    "pyproject_sha256": "f6e25a1df26c5355adc6c4adb7713be9b3faee2a706f0c3f6f7b518900b702b1",
+    "repository_default_rff_dimension": 256,
+    "reproduction_override": 512,
+    "tta_init_sha256": "a57b0d13e00118bc5ae0b0f8aa49d5ebf8db5bdfc0a72383fa53c95b2ecb5311"
+  },
+  "paper_id": "lq8fNVME8v",
+  "primary_source": {
+    "official_repo_commit": "45158124f0cbdc2f6c1ac602c9fc5501dce20af3",
+    "official_rff_sha256": "0a7e8a2261c9ab9f8b327c01335dd7ff9cb7d5efd48abcf1980bf9c125d329b9",
+    "pdf_sha256": "1fc774ab166496d0861720b14212204c46cf920dc22c5df006d1d48f5eba01f0",
+    "tex_sha256": "ff81fd973e3bcba86fb23e9a0c102ec88e240f62361315c7875de54e29ea4fd2"
+  },
+  "title": "Minimum Distance Summaries for Robust Neural Posterior Estimation"
+}
