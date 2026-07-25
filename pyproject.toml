@@ -1,0 +1,40 @@
+[project]
+name = "mds-reproduction"
+version = "0.1.0"
+description = "CPU-only reproduction of Minimum Distance Summaries for Robust Neural Posterior Estimation"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "cryosbi",
+  "huggingface-hub>=0.34,<2",
+  "hydra-core>=1.3.2,<2",
+  "marimo>=0.16,<1",
+  "matplotlib==3.11.0",
+  "numpy==2.3.5",
+  "pandas==3.0.3",
+  "pillow>=11,<13",
+  "pytest>=8,<10",
+  "requests>=2.32,<3",
+  "sbi>=0.25,<1",
+  "scikit-learn==1.8.0",
+  "scipy==1.17.1",
+  "seaborn>=0.13,<1",
+  "sympy>=1.14,<2",
+  "torch==2.12.0",
+  "torchvision==0.27.0",
+  "trackio>=0.4,<1",
+  "z3-solver>=4.15,<5",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+cryosbi = { path = "external/cryoSBI" }
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

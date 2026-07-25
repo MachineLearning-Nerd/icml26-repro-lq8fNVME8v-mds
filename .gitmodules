@@ -1,0 +1,6 @@
+[submodule "source/official-repo"]
+	path = source/official-repo
+	url = https://github.com/Shermjj/Minimum-Distance-Summaries
+[submodule "external/cryoSBI"]
+	path = external/cryoSBI
+	url = https://github.com/flatironinstitute/cryoSBI.git
