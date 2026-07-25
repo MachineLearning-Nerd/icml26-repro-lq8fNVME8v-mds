@@ -23,6 +23,7 @@ COMMANDS = [
     [sys.executable, "reproduction/neural_npe_upgrade.py"],
     [sys.executable, "reproduction/integrate_neural_upgrade.py"],
     [sys.executable, "-m", "unittest", "-v", "reproduction/test_reproduction.py"],
+    [sys.executable, "reproduction/campaign/run_theorem_4_2.py"],
 ]
 
 
