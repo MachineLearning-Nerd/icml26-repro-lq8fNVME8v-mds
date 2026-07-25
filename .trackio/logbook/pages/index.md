@@ -5,6 +5,7 @@
 | Page | Current status |
 | --- | --- |
 | [Theorem 4.1 — exact-assumption counterexample](#/current-theorem-4-1) | **FALSIFIED** |
+| [Theorem 4.2 — exact-assumption counterexample](#/current-theorem-4-2) | **FALSIFIED** |
 
 The current page above supersedes the older finite special-case theory audit.
 The historical files are preserved below for provenance.

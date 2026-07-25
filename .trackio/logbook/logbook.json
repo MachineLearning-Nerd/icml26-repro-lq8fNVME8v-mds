@@ -23,6 +23,12 @@
         "children": []
       },
       {
+        "slug": "current-theorem-4-2",
+        "title": "Current verification - Theorem 4.2",
+        "file": "pages/current-theorem-4-2/page.md",
+        "children": []
+      },
+      {
         "slug": "00-scored-evidence-summary",
         "title": "Historical rejected baseline - 00 scored evidence summary",
         "file": "pages/00-scored-evidence-summary/page.md",

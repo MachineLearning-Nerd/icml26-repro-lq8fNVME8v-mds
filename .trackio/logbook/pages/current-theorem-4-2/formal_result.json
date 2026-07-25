@@ -1,0 +1,13 @@
+{
+  "claim": "Theorem 4.2",
+  "verdict": "FALSIFIED",
+  "formal_run_id": "93bf6002-6dae-414e-a678-b2b39d42f138",
+  "git_sha": "21cbbcff42d077e5508b77624b9d7691b2636b3d",
+  "scenario": "printed_assumptions_missing_C0",
+  "all_printed_and_boundary_assumptions": true,
+  "kernel": "1 + g(x) exp(-(x-y)^2) g(y), g(x)=x^2 exp(-x^2)",
+  "kernel_ispd_certificate": "E_kappa(mu)=mu(X)^2+E_RBF(g mu); zero energy forces mu(X)=0 and g mu=0; g vanishes only at 0, so mu is supported at 0 and zero total mass forces mu=0.",
+  "original_consistency_certificate": "W1(T_A,N,delta0)=w_N/N tends to zero.",
+  "mds_failure_certificate": "MMD_kappa(delta_N,delta0)=N^2 exp(-N^2) tends to zero, but the bounded continuous h(x)=x^2/(1+x^2) has E_delta_N h tending to one while h(0)=0.",
+  "rows_file": "formal_results.csv"
+}

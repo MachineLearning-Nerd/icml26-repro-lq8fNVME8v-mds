@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "scenario": "gaussian_C0_control",
+  "expected_nonzero_exit": true,
+  "actual_exit_code": 1,
+  "control_verdict": "NOT_FALSIFIED",
+  "escaping_summary_mmd_at_N_30": 1.4142135623730951,
+  "original_summary_mmd_at_N_30": 8.77815493418756e-11,
+  "reason": "A Gaussian C0 kernel detects mass escaping to infinity, so the escaping summary is not selected."
+}
