@@ -1,0 +1,8 @@
+{
+  "claim": "Under Appendix A.1 assumptions, sup_y d/dε KL[P(theta|s*(Q)),P(theta|s*(Q_{ε,y}))]|_{ε=0} is finite for any Q.",
+  "falsification_criterion": "Exhibit one Q and y satisfying all ten printed assumptions for which the right KL difference quotient diverges.",
+  "paper": "2602.09161",
+  "source_anchor_html": "#S4.Thmtheorem1",
+  "source_anchor_tex": "arxiv_main.tex:337",
+  "verdict_vocabulary": ["VERIFIED", "FALSIFIED", "BLOCKED"]
+}
