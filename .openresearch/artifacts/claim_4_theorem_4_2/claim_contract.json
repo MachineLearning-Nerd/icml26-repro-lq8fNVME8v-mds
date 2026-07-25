@@ -1,0 +1,8 @@
+{
+  "claim": "Under Appendix A.3 assumptions, original-summary posterior weak consistency implies MDS-summary posterior weak consistency.",
+  "falsification_criterion": "Give an exact correctly specified conditional model satisfying every printed assumption where the original posterior converges weakly but the MDS posterior does not.",
+  "paper": "2602.09161",
+  "source_anchor_html": "#S4.Thmtheorem2",
+  "source_anchor_tex": "arxiv_main.tex:368",
+  "verdict_vocabulary": ["VERIFIED", "FALSIFIED", "BLOCKED"]
+}
