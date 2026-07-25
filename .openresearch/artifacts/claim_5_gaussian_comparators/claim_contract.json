@@ -1,0 +1,25 @@
+{
+  "claim_id": 5,
+  "claim_text_imported_from_judge": "On the Gaussian model, MDS outperforms NPE, NNPE, and NPE-OR baselines across a range of contamination proportions, with degradation only appearing at contamination levels above 40% (Figure 2).",
+  "paper_statement": "In general, our MDS improves robustness compared to other benchmark methods, although for severe proportion of contamination, MDS can degrade.",
+  "scope": {
+    "model": "conjugate bivariate Gaussian location",
+    "training_datasets": 50000,
+    "test_datasets": 100,
+    "observations_per_dataset": 100,
+    "posterior_samples": 2000,
+    "contamination_proportions": [0.0, 0.1, 0.2, 0.3, 0.5],
+    "outlier_magnitude": 3.0,
+    "methods": ["NPE", "NNPE", "NPE-MDS (RF)", "NPE-OR"],
+    "primary_metric": "biased five-bandwidth MMD to the analytic clean posterior"
+  },
+  "preregistered_decision_rule": {
+    "verified": "Not available for the stronger imported gloss because Figure 2 itself shows NPE-OR below MDS at some contamination levels.",
+    "falsified": "The independent integrity checker passes; frozen NPE hashes agree before/after adaptation; paired 95% bootstrap intervals show MDS below both NPE and NNPE at eps=0.1,0.2,0.3; at least one prespecified eps in {0.1,0.2,0.3} has the NPE-OR-minus-MDS interval wholly below zero; and MDS mean MMD at eps=0.5 exceeds 1.5 times its mean at eps=0.3.",
+    "blocked": "Any integrity, fidelity, comparator, or degradation condition is unresolved."
+  },
+  "interpretation_boundary": "A FALSIFIED verdict applies only to the stronger imported all-comparator gloss. It does not falsify the paper's explicitly qualified 'in general' statement.",
+  "negative_control": "Disabling MDS adaptation makes it identical to NPE and must exit nonzero because it cannot establish the intended comparator contradiction.",
+  "seeds": [42],
+  "bootstrap_replicates": 10000
+}
