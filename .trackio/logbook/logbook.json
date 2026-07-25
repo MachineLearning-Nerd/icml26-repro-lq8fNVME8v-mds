@@ -17,8 +17,14 @@
     "file": "pages/index.md",
     "children": [
       {
+        "slug": "current-theorem-4-1",
+        "title": "Current verification - Theorem 4.1",
+        "file": "pages/current-theorem-4-1/page.md",
+        "children": []
+      },
+      {
         "slug": "00-scored-evidence-summary",
-        "title": "00 - Scored evidence summary",
+        "title": "Historical rejected baseline - 00 scored evidence summary",
         "file": "pages/00-scored-evidence-summary/page.md",
         "children": []
       },

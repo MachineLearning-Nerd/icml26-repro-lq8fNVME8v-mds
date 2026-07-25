@@ -1,0 +1,15 @@
+{
+  "formal_run_id": "e50ebf39-1199-4b76-9070-a7fa83e1b342",
+  "git_sha": "e34e78537b699678bbb1fc02d03ce0141e273771",
+  "fixed_command": "git submodule update --init --recursive && uv sync --frozen && uv run python reproduction/run_all.py",
+  "selected_backend": "hf",
+  "selected_flavor": "cpu-upgrade",
+  "estimated_required_cores_theorem_route": 1,
+  "estimated_required_cores_cumulative_command": 4,
+  "actual_cpu_allocation_logical": 64,
+  "gpu_used": false,
+  "theorem_route_runtime_seconds": 1.1719242429826409,
+  "cumulative_runtime_seconds": 960.4140602420084,
+  "cumulative_regression_tests_passed": 16,
+  "cumulative_regression_tests_total": 16
+}

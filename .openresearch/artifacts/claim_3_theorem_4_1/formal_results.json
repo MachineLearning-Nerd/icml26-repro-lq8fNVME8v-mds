@@ -1,0 +1,27 @@
+{
+  "claim": "Theorem 4.1",
+  "verdict": "FALSIFIED",
+  "formal_run_id": "e50ebf39-1199-4b76-9070-a7fa83e1b342",
+  "experiment_id": "b7b4577b-e66c-44ff-a24b-ab82f7e8da5b",
+  "git_sha": "e34e78537b699678bbb1fc02d03ce0141e273771",
+  "scenario": "quartically_flat_target",
+  "paper_defined_M": 0.3849001794597505,
+  "actual_target_objective_hessian_at_zero": 0.0,
+  "all_ten_printed_assumptions": true,
+  "asymptotic": {
+    "expected_summary_constant": 2.0396489026555056,
+    "expected_kl_quotient_constant": 2.1109031920150296,
+    "summary_log_log_slope": 0.33315644079551965,
+    "kl_over_epsilon_log_log_slope": -0.333822265216391
+  },
+  "rows": [
+    {"epsilon": 0.001, "summary": 0.20311789970229152, "posterior_kl": 0.020867737562695693, "kl_over_epsilon": 20.867737562695694},
+    {"epsilon": 0.0001, "summary": 0.09458729560624082, "posterior_kl": 0.004536522260058693, "kl_over_epsilon": 45.365222600586925},
+    {"epsilon": 0.00001, "summary": 0.04393441893503251, "posterior_kl": 0.0009792700441330477, "kl_over_epsilon": 97.92700441330477},
+    {"epsilon": 0.000001, "summary": 0.02039564051353538, "posterior_kl": 0.00021106596940618716, "kl_over_epsilon": 211.06596940618715},
+    {"epsilon": 0.0000001, "summary": 0.009467126718539677, "posterior_kl": 0.00004547690034235888, "kl_over_epsilon": 454.7690034235888},
+    {"epsilon": 0.00000001, "summary": 0.00439428186602991, "posterior_kl": 0.000009797892219961393, "kl_over_epsilon": 979.7892219961393},
+    {"epsilon": 0.000000001, "summary": 0.002039648053993461, "posterior_kl": 0.0000021109007565357714, "kl_over_epsilon": 2110.9007565357715},
+    {"epsilon": 0.0000000001, "summary": 0.0009467210719640045, "posterior_kl": 0.00000045478019310800254, "kl_over_epsilon": 4547.8019310800255}
+  ]
+}

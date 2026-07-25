@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checks": {
+    "all_ten_printed_assumptions": true,
+    "paper_M_positive": true,
+    "target_hessian_zero": true,
+    "summary_cube_root_rate": true,
+    "summary_constant": true,
+    "kl_quotient_divergence_rate": true,
+    "kl_constant": true
+  },
+  "analytic_summary_constant": 2.0396489026555056,
+  "observed_scaled_summary": 2.0396487192234227,
+  "analytic_quotient_constant": 2.110903192015029,
+  "observed_scaled_quotient": 2.1109026660783687,
+  "independent_summary_slope": 0.33331973815466426,
+  "independent_quotient_slope": -0.3333710273887194
+}

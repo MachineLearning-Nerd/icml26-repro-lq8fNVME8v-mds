@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scenario": "correctly_specified_control",
+  "expected_nonzero_exit": true,
+  "actual_exit_code": 1,
+  "control_verdict": "NOT_FALSIFIED",
+  "actual_target_objective_hessian_at_zero": 0.3849001794597505,
+  "summary_log_log_slope": 1.0000389238559695,
+  "kl_over_epsilon_log_log_slope": 1.0000778407008284,
+  "reason": "A nondegenerate correctly specified target moves s at O(epsilon), so KL/epsilon tends to zero."
+}
