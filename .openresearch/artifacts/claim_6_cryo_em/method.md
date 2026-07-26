@@ -40,6 +40,27 @@ independent domain-faithful reading of the discrete task, not a claim that the
 authors' Figure 4 runner used grid normalization. The same preregistered effect
 and clean-regime thresholds are applied to the grid metrics.
 
+## Route 3: vector reconstruction of Figure 4
+
+The exact paper PDF page 8 is converted once to a committed SVG. The
+conversion retains the vector plotting paths. A standard-library parser finds
+the eight six-point curves and their 48 vertical uncertainty intervals by
+exact color, transform, line width, and epsilon-coordinate grid. It fits each
+y-axis calibration independently from every visible labeled tick:
+
+- RMSE ticks 2 through 8 at seven vector coordinates.
+- Predictive-MMD ticks 0.032 through 0.038 at four vector coordinates.
+
+No curve value is manually entered. An independent checker uses separately
+hard-coded source hashes, axis coefficients, epsilon grids, and the full
+factorial contract to reconstruct the CSV. A disabled-adaptation curve control
+must exit nonzero.
+
+This route can rigorously establish the values displayed by Figure 4 and
+compare them with the full-scale experimental routes. It cannot independently
+verify the underlying experiment because the figure is part of the paper
+being tested. The route therefore remains fail-closed with verdict BLOCKED.
+
 ## Memory-preserving equivalence
 
 The first 10,000 raw training datasets are stored in a temporary 4.096 GB

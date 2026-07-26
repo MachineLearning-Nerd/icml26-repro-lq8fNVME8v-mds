@@ -29,3 +29,6 @@
 - One stochastic full-scale retraining cannot by itself falsify the empirical
   Figure 4 claim. A missed verification threshold remains BLOCKED pending the
   required independent routes.
+- Route 3 reconstructs the exact vector figure and error intervals. It is
+  useful for quantifying the published target and discrepancies, but is not
+  independent experimental evidence and cannot carry a VERIFIED verdict.
