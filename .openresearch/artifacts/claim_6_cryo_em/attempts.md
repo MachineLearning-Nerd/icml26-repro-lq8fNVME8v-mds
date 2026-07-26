@@ -58,11 +58,17 @@ All nontrivial runs use Hugging Face `cpu-upgrade`; no GPU is used.
   exactly: `ef27c8f5d79c1cc225d1fba328c3f4de86f0b3bf914b7da1de47797dac3150de`.
 - Candidates: full-scale independent retraining; worst valid single query;
   disabled-MDS/altered-noise assumption violation.
-- Expected qualification: none contradicts a universal source quantifier.
+- Qualification result: none contradicts a universal source quantifier.
   The paper reports a finite Figure 4 experiment and does not quantify over
   every retraining seed, realization, test set, or query.
 - Control: deliberately treating a failed reproduction as falsification must
   exit nonzero.
-- Formal run: pending. If no valid counterexample qualifies, the final result
-  is BLOCKED and the missing authors' checkpoint/data realization is the
-  concrete external capability needed to resolve the discrepancy.
+- Formal run: `6e01e046-c72a-4ddc-8a83-daf8d95be54d`, commit
+  `1d7e7cad0bd13410d48cfa5dfe69604cf06e4a5f`.
+- Result: all 12 independent checks passed, the reconstructed Route 1 CSV
+  matched SHA-256
+  `ef27c8f5d79c1cc225d1fba328c3f4de86f0b3bf914b7da1de47797dac3150de`,
+  no candidate qualified as a valid falsification, and the verifier exited
+  nonzero with the final verdict `BLOCKED`.
+- Unblocker: the authors' exact checkpoint and training/test realization, or
+  an explicit universal quantifier over seeds/realizations.

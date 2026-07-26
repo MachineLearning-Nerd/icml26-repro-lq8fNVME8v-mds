@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT_DIR = ROOT / ".openresearch" / "artifacts" / "baseline"
-ESTIMATED_REQUIRED_CORES = 4
+ESTIMATED_REQUIRED_CORES = 6
 SELECTED_BACKEND = "hf"
 SELECTED_FLAVOR = "cpu-upgrade"
 COMMANDS = [
@@ -50,7 +50,7 @@ def main() -> None:
     ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
     receipt = {
-        "contract": "frozen judged baseline cumulative reproduction",
+        "contract": "cumulative claims 1-6 reproduction",
         "estimated_required_cores": ESTIMATED_REQUIRED_CORES,
         "selected_backend": SELECTED_BACKEND,
         "selected_flavor": SELECTED_FLAVOR,
@@ -69,11 +69,13 @@ def main() -> None:
         encoding="utf-8",
     )
     eval_text = (
-        "# Baseline evaluation\n\n"
+        "# Cumulative evaluation\n\n"
         "Status: VERIFIED\n\n"
-        "The frozen judged baseline regenerated successfully and all 16 cumulative "
-        "assertions passed. This preserves Claims 1 and 2 and reproduces the "
-        "historical, below-full-credit evidence for Claims 3–6.\n\n"
+        "The frozen judged baseline and every accepted current claim check "
+        "regenerated successfully. This preserves Claims 1 and 2, reruns the exact "
+        "counterexamples for Claims 3 and 4, reruns the full Gaussian comparator "
+        "suite for Claim 5, and reruns the fail-closed final Cryo-EM qualification "
+        "for Claim 6.\n\n"
         f"Runtime seconds: {receipt['runtime_seconds']:.6f}\n"
         f"Estimated cores: {ESTIMATED_REQUIRED_CORES}\n"
         f"Actual logical CPUs: {receipt['actual_cpu_allocation_logical']}\n"
