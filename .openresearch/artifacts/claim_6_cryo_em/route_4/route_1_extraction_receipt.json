@@ -1,0 +1,10 @@
+{
+  "integrity_matches_formal_summary": true,
+  "reconstructed_csv_sha256": "ef27c8f5d79c1cc225d1fba328c3f4de86f0b3bf914b7da1de47797dac3150de",
+  "source_commit": "fbe0df8380d3ff461c3694b28e53dd6d93d5f6da",
+  "source_experiment_id": "d10971a4-1304-418c-a05c-f2f0f5e55fcc",
+  "source_log_capture_sha256": "b15f36755b580f40bebc38efcc76b11f829fd69dc171c5bafda69324e8138e36",
+  "source_run_id": "1df5f0be-40f8-495f-bf0c-ea9ada0ebc9f",
+  "summary_sha256": "f80cff6ce127a5c8000aa712461f48a7e478202d97273b276e75eac71068d70c",
+  "trial_rows": 1200
+}

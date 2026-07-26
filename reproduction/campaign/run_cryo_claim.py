@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def main() -> None:
     subprocess.run(
-        [sys.executable, "reproduction/campaign/run_cryo_figure4.py"],
+        [sys.executable, "reproduction/campaign/run_cryo_falsification.py"],
         cwd=ROOT,
         check=True,
     )

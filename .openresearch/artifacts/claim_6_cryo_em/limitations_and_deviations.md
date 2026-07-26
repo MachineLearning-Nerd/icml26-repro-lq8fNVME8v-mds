@@ -32,3 +32,7 @@
 - Route 3 reconstructs the exact vector figure and error intervals. It is
   useful for quantifying the published target and discrepancies, but is not
   independent experimental evidence and cannot carry a VERIFIED verdict.
+- Route 4 cannot access the authors' exact saved Cryo checkpoint, training
+  corpus, or test corpus because none is released. The paper also supplies no
+  universal retraining quantifier. The route therefore cannot honestly turn
+  the exact-protocol disagreement into a valid FALSIFIED verdict.

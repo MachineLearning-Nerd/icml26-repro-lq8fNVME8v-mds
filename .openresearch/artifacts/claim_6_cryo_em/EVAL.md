@@ -1,6 +1,6 @@
 # Claim 6 evaluation
 
-Status: ROUTE 3 PENDING; ROUTES 1–2 BLOCKED
+Status: ROUTE 4 PENDING; ROUTES 1–3 BLOCKED
 
 Route 1 completed at exact paper scale on Hugging Face `cpu-upgrade`: 15,000
 training datasets, 10,000 RFF-fit datasets, 100 tests, 100 32×32 images per
@@ -22,8 +22,16 @@ were only `21.2%`, `17.9%`, `7.6%`, and `-24.6%` at epsilon 0.2–0.5. Its
 independent checker passed; its fail-closed verifier correctly returned
 BLOCKED.
 
-Route 3 reconstructs all means and intervals in the exact vector Figure 4
-using only axis-tick calibration. It is source-level corroboration, not an
-independent experiment, and is preregistered to remain BLOCKED even if the
-paper curves satisfy every effect threshold. No forecast point is assigned
-before its formal run.
+Route 3 reconstructed all 48 means and intervals in the exact vector Figure 4
+using only axis-tick calibration. The independent checker passed. The paper
+curves show 58–63% RMSE and 9.6–13.1% predictive-MMD reductions at epsilon
+0.2–0.5 while preserving the clean regime, but the route correctly remains
+BLOCKED because paper-source evidence is not an independent experiment.
+
+Confidence remains LOW after three routes. Route 4 is the mandatory
+falsification attempt. It reconstructs Route 1's complete raw CSV from the
+formal log with an exact hash match, audits three candidate counterexamples,
+and requires both assumption satisfaction and contradiction of the exact
+source quantifier. Unless that strict gate passes, the final Claim 6 status
+will be BLOCKED, not FALSIFIED. No forecast point is assigned before the
+formal run.

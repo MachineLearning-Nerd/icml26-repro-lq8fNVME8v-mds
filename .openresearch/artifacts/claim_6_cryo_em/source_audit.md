@@ -56,6 +56,21 @@ deviation from the released continuous-sampling evaluator.
 - Axis values are derived from visible ticks. Curve values are not copied from
   a visual estimate or from the experiment verifier.
 
+## Route 4 quantifier audit
+
+Section 6.3 describes a finite empirical result and points to Figure 4. It
+does not state a universal quantifier over training seeds, simulator
+realizations, test datasets, or individual queries. The appendix fixes the
+task and training scale but does not publish the exact trained checkpoint,
+generated training corpus, or test corpus used for the figure.
+
+Therefore, an independent exact-protocol run that disagrees with Figure 4 is
+a material reproducibility discrepancy, but not by itself a logical
+counterexample to the finite empirical report. A single-query exception also
+cannot contradict the figure's aggregate estimand. The route records this
+boundary explicitly instead of converting a failed reproduction into
+FALSIFIED.
+
 ## Source discrepancies
 
 The paper's general RFF implementation paragraph says 512 features for all

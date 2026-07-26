@@ -61,6 +61,31 @@ compare them with the full-scale experimental routes. It cannot independently
 verify the underlying experiment because the figure is part of the paper
 being tested. The route therefore remains fail-closed with verdict BLOCKED.
 
+## Route 4: mandatory falsification qualification
+
+The exact 1,200 Route 1 trial rows are reconstructed from formal run
+`1df5f0be-40f8-495f-bf0c-ea9ada0ebc9f`. Re-serializing the logged rows with
+the original CSV schema reproduces the formal raw SHA-256 exactly:
+`ef27c8f5d79c1cc225d1fba328c3f4de86f0b3bf914b7da1de47797dac3150de`.
+
+The audit first restates the claim, HSP90 domain, contamination, scale,
+estimand, and source quantifier. It then evaluates three materially distinct
+candidate counterexamples:
+
+1. The full-scale independent seed-42 retraining, which satisfies the stated
+   task assumptions but is a different realized experiment.
+2. The worst valid individual query, which does not contradict a 100-test
+   aggregate report.
+3. Disabled MDS or altered noise, which violates the named algorithm or
+   contamination.
+
+A candidate qualifies only if it satisfies the paper assumptions and
+contradicts the exact quantified statement. The paper ties the claim to a
+finite Figure 4 experiment and does not universally quantify over every
+training seed, realization, test set, or query. Consequently, a rigorous
+reproduction discrepancy alone is not promoted to FALSIFIED. The negative
+control deliberately attempts that invalid promotion and must exit nonzero.
+
 ## Memory-preserving equivalence
 
 The first 10,000 raw training datasets are stored in a temporary 4.096 GB
