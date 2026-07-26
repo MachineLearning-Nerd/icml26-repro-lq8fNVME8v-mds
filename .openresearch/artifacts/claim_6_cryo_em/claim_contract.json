@@ -1,0 +1,29 @@
+{
+  "claim_id": 6,
+  "claim_text": "On a 1024-dimensional Cryo-EM inference task, MDS substantially improves robustness to Gaussian noise contamination while maintaining performance in the well-specified regime (Figure 4).",
+  "scope": {
+    "molecule": "HSP90",
+    "states": 20,
+    "training_datasets": 15000,
+    "rff_fit_datasets": 10000,
+    "test_datasets": 100,
+    "images_per_dataset": 100,
+    "image_shape": [32, 32],
+    "image_dimension": 1024,
+    "summary_dimension": 6,
+    "posterior_samples": 2000,
+    "contamination_proportions": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5],
+    "methods": ["NPE", "NPE-MDS (RF)"],
+    "primary_metric": "posterior RMSE against the true HSP90 state",
+    "secondary_metric": "squared 1024-RFF posterior-predictive mean-embedding distance"
+  },
+  "preregistered_decision_rule": {
+    "verified": "The independent full-scale integrity checker passes; paired 95% bootstrap intervals for NPE-minus-MDS RMSE and predictive RFF distance are wholly above zero at every epsilon in {0.2,0.3,0.4,0.5}; mean relative reduction across those levels is at least 30% for RMSE and 5% for predictive RFF distance; and both MDS/NPE mean metric ratios at epsilon=0 are at most 1.10.",
+    "falsified": "Not assigned from a single stochastic retraining. A failure to meet the verification thresholds is BLOCKED and requires independent routes before any falsification claim.",
+    "blocked": "Any scale, integrity, frozen-model, reproducibility, improvement, substantial-effect, or clean-regime condition is unresolved."
+  },
+  "substantial_effect_threshold_basis": "The published Figure 4 shows roughly 45-60% RMSE reduction and approximately 8-13% predictive-MMD reduction at epsilon 0.2-0.5. Thresholds of 30% and 5% are conservative and fixed before the run.",
+  "negative_control": "Disabled adaptation is reconstructed from the NPE rows and must exit nonzero because its paired gain is identically zero.",
+  "seeds": [42],
+  "bootstrap_replicates": 10000
+}
