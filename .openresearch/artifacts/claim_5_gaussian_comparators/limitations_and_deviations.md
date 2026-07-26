@@ -17,3 +17,10 @@
 - One fixed deterministic seed is used for the full 100-dataset design.
   Uncertainty is over paired test datasets, as specified for the paper's error
   bars, rather than over independently retrained neural estimators.
+- The official `tt_sbi.inference` package initializer eagerly imports NPE-RS,
+  which imports `sbibm.c2st` even when NPE-RS is unused. `sbibm==1.1` requires
+  the incompatible `sbi<0.22`, while the official project requires
+  `sbi>=0.25`. The reproduction installs narrow Python namespace packages for
+  `tt_sbi.inference` and `tt_sbi.tta`, then imports the same pinned `nn.py`,
+  `npe.py`, `npe_noisy.py`, `adapters.py`, and `rff.py` files directly. It
+  neither replaces an implementation file nor calls the unavailable C2ST.

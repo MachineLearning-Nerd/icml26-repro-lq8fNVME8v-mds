@@ -19,6 +19,7 @@ import random
 import subprocess
 import sys
 import time
+import types
 from pathlib import Path
 
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
@@ -32,6 +33,25 @@ from sklearn.preprocessing import StandardScaler
 ROOT = Path(__file__).resolve().parents[2]
 OFFICIAL = ROOT / "source" / "official-repo"
 sys.path.insert(0, str(OFFICIAL / "src"))
+
+# The authors' inference package initializer eagerly imports the optional
+# NPE-RS implementation, which in turn imports sbibm.c2st.  sbibm 1.1 pins an
+# incompatible sbi<0.22, while this repository pins sbi>=0.25.  Install narrow
+# namespace packages so the exact modules needed here load without executing
+# unrelated package initializers; no implementation file is replaced.
+import tt_sbi
+
+
+def install_module_namespace(name: str, path: Path) -> None:
+    module = types.ModuleType(name)
+    module.__package__ = name
+    module.__path__ = [str(path)]
+    sys.modules[name] = module
+    setattr(tt_sbi, name.rsplit(".", 1)[-1], module)
+
+
+install_module_namespace("tt_sbi.inference", OFFICIAL / "src/tt_sbi/inference")
+install_module_namespace("tt_sbi.tta", OFFICIAL / "src/tt_sbi/tta")
 
 from tt_sbi.inference.nn import build_npe_model, get_embedding_net
 from tt_sbi.inference.npe import NPE_TrainConfig, sample_npe_posterior, train_NPE_estimator

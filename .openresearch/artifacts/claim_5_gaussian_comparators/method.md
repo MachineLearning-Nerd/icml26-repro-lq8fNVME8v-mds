@@ -31,6 +31,13 @@ git submodule update --init --recursive && uv sync --frozen && uv run python rep
 
 The environment is the repository-level `.venv` resolved by `uv.lock`.
 
+The pinned authors' package has one optional-import conflict: importing the
+`tt_sbi.inference` package eagerly imports NPE-RS and therefore `sbibm`, whose
+released dependency pins an incompatible old `sbi`. The runner creates narrow
+namespace packages to bypass only the eager `__init__.py`, then imports the
+exact pinned implementation modules used by this experiment. This workaround
+is audited in `limitations_and_deviations.md`.
+
 ## Compute estimate
 
 The experiment is expected to use at most six CPU cores and has uncertain
