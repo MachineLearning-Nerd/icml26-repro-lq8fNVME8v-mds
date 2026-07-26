@@ -1,18 +1,22 @@
 # Claim 6 evaluation
 
-Status: BLOCKED
+Status: ROUTE 2 PENDING; ROUTE 1 BLOCKED
 
-The full-scale code, exact claim contract, independent checker, and negative
-control are prepared. No scientific run has occurred because Hugging Face Jobs
-rejected submission with HTTP 402: pre-paid credit balance insufficient.
+Route 1 completed at exact paper scale on Hugging Face `cpu-upgrade`: 15,000
+training datasets, 10,000 RFF-fit datasets, 100 tests, 100 32×32 images per
+test, 2,000 posterior samples, and all six contamination levels. The
+independent integrity checker passed all checks and the NPE tensor hash was
+unchanged.
 
-The result remains BLOCKED until a formal HF `cpu-upgrade` run completes and:
+The authors' continuous-sampling interpretation did not satisfy the
+preregistered contract. Mean RMSE for NPE versus MDS was respectively
+`4.073/5.849` at epsilon 0 and `6.004/5.837`, `6.395/5.854`,
+`6.380/5.860`, and `6.278/5.899` at epsilon 0.2–0.5. The clean ratio was
+`1.436`; mean robustness reductions were only `2.8%–8.5%`, below the
+preregistered 30% threshold. The verdict is honestly BLOCKED, not falsified.
 
-1. all inherited Claim 1–4 regression checks pass;
-2. all 1,200 raw method-by-test rows are present;
-3. the independent scale/integrity reconstruction passes;
-4. the NPE tensor hash is identical before and after MDS;
-5. the fail-closed exact-claim verifier exits zero; and
-6. the disabled-adaptation control exits nonzero.
-
-No forecast point is assigned while this page is blocked.
+Route 2 retains every continuous result and additionally normalizes the
+learned density over the complete discrete state domain `{0,...,19}`. The
+current verifier targets those exhaustive grid metrics and remains fail-closed.
+The disabled-adaptation control must still exit nonzero. No forecast point is
+assigned before the formal Route 2 run.

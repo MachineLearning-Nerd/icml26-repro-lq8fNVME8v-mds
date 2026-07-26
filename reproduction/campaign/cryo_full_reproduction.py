@@ -389,6 +389,44 @@ def posterior_rmse(samples: torch.Tensor, theta: torch.Tensor) -> float:
     return float(torch.sqrt(torch.mean((samples.mean(0) - theta) ** 2)))
 
 
+def discrete_posterior_weights(
+    model: torch.nn.Module, summary: torch.Tensor
+) -> torch.Tensor:
+    """Normalize the learned density over the task's complete 20-state domain."""
+    states = torch.arange(N_STATES, dtype=torch.float32).unsqueeze(-1)
+    conditions = summary.reshape(1, -1).repeat(N_STATES, 1)
+    with torch.no_grad():
+        negative_log_density = model.loss(
+            states, condition=conditions
+        ).reshape(-1)
+        weights = torch.softmax(-negative_log_density, dim=0).cpu()
+    if len(weights) != N_STATES or not torch.isfinite(weights).all():
+        raise AssertionError("invalid discrete-state posterior weights")
+    return weights
+
+
+def weighted_posterior_rmse(
+    weights: torch.Tensor, theta: torch.Tensor
+) -> tuple[float, float]:
+    states = torch.arange(N_STATES, dtype=torch.float32)
+    mean = torch.sum(weights * states)
+    rmse = torch.sqrt(torch.mean((mean - theta.reshape(-1)) ** 2))
+    return float(mean), float(rmse)
+
+
+def weighted_predictive_rff_mmd(
+    weights: np.ndarray,
+    clean_images: torch.Tensor,
+    state_embeddings: np.ndarray,
+    rff: RBFSampler,
+) -> float:
+    predicted_embedding = weights @ state_embeddings
+    clean_embedding = rff.transform(
+        clean_images.reshape(N_OBS, IMAGE_DIM).numpy()
+    ).mean(axis=0)
+    return float(np.sum((predicted_embedding - clean_embedding) ** 2))
+
+
 def predictive_rff_mmd(
     samples: torch.Tensor,
     clean_images: torch.Tensor,
@@ -400,11 +438,9 @@ def predictive_rff_mmd(
     )
     weights = np.bincount(states, minlength=N_STATES).astype(np.float64)
     weights /= weights.sum()
-    predicted_embedding = weights @ state_embeddings
-    clean_embedding = rff.transform(
-        clean_images.reshape(N_OBS, IMAGE_DIM).numpy()
-    ).mean(axis=0)
-    return float(np.sum((predicted_embedding - clean_embedding) ** 2))
+    return weighted_predictive_rff_mmd(
+        weights, clean_images, state_embeddings, rff
+    )
 
 
 def bootstrap_ci(
@@ -438,16 +474,48 @@ def aggregate(rows: list[dict]) -> list[dict]:
         mds_pred = np.array(
             [row["predictive_rff_mmd"] for row in selected["NPE-MDS (RF)"]]
         )
+        npe_grid_rmse = np.array(
+            [row["grid_rmse"] for row in selected["NPE"]]
+        )
+        mds_grid_rmse = np.array(
+            [row["grid_rmse"] for row in selected["NPE-MDS (RF)"]]
+        )
+        npe_grid_pred = np.array(
+            [row["grid_predictive_rff_mmd"] for row in selected["NPE"]]
+        )
+        mds_grid_pred = np.array(
+            [
+                row["grid_predictive_rff_mmd"]
+                for row in selected["NPE-MDS (RF)"]
+            ]
+        )
         rmse_low, rmse_high = bootstrap_ci(
             npe_rmse - mds_rmse, SEED + 40_000 + epsilon_index
         )
         pred_low, pred_high = bootstrap_ci(
             npe_pred - mds_pred, SEED + 50_000 + epsilon_index
         )
+        grid_rmse_low, grid_rmse_high = bootstrap_ci(
+            npe_grid_rmse - mds_grid_rmse,
+            SEED + 60_000 + epsilon_index,
+        )
+        grid_pred_low, grid_pred_high = bootstrap_ci(
+            npe_grid_pred - mds_grid_pred,
+            SEED + 70_000 + epsilon_index,
+        )
         for method in METHODS:
             rmses = np.array([row["rmse"] for row in selected[method]])
             preds = np.array(
                 [row["predictive_rff_mmd"] for row in selected[method]]
+            )
+            grid_rmses = np.array(
+                [row["grid_rmse"] for row in selected[method]]
+            )
+            grid_preds = np.array(
+                [row["grid_predictive_rff_mmd"] for row in selected[method]]
+            )
+            summary_distances = np.array(
+                [row["summary_to_clean_l2"] for row in selected[method]]
             )
             output.append(
                 {
@@ -468,6 +536,28 @@ def aggregate(rows: list[dict]) -> list[dict]:
                     ),
                     "npe_minus_mds_predictive_ci95_low": pred_low,
                     "npe_minus_mds_predictive_ci95_high": pred_high,
+                    "grid_rmse_mean": float(grid_rmses.mean()),
+                    "grid_rmse_std": float(grid_rmses.std(ddof=1)),
+                    "grid_predictive_rff_mmd_mean": float(grid_preds.mean()),
+                    "grid_predictive_rff_mmd_std": float(
+                        grid_preds.std(ddof=1)
+                    ),
+                    "summary_to_clean_l2_mean": float(
+                        summary_distances.mean()
+                    ),
+                    "summary_to_clean_l2_std": float(
+                        summary_distances.std(ddof=1)
+                    ),
+                    "npe_minus_mds_grid_rmse_mean": float(
+                        (npe_grid_rmse - mds_grid_rmse).mean()
+                    ),
+                    "npe_minus_mds_grid_rmse_ci95_low": grid_rmse_low,
+                    "npe_minus_mds_grid_rmse_ci95_high": grid_rmse_high,
+                    "npe_minus_mds_grid_predictive_mean": float(
+                        (npe_grid_pred - mds_grid_pred).mean()
+                    ),
+                    "npe_minus_mds_grid_predictive_ci95_low": grid_pred_low,
+                    "npe_minus_mds_grid_predictive_ci95_high": grid_pred_high,
                 }
             )
     return output
@@ -510,6 +600,7 @@ def main() -> None:
             model, adapter, device="cpu", bypass_embedding=True
         )
         theta_test, clean = generate_clean_test(task)
+        clean_summaries = task.compute_summary_statistics(clean)
         rows: list[dict] = []
         for epsilon_index, epsilon in enumerate(EPSILONS):
             observed, mask = contaminate(task, clean, epsilon)
@@ -539,10 +630,20 @@ def main() -> None:
                     s_obs=s_obs,
                 )
                 adapt_ms = 1_000 * (time.perf_counter() - adapt_started)
-                for method, samples in (
-                    ("NPE", npe_samples),
-                    ("NPE-MDS (RF)", mds_samples),
+                for method, samples, summary_used in (
+                    ("NPE", npe_samples, s_obs),
+                    (
+                        "NPE-MDS (RF)",
+                        mds_samples,
+                        adapt_info["best_s"].reshape(-1),
+                    ),
                 ):
+                    grid_weights = discrete_posterior_weights(
+                        model, summary_used
+                    )
+                    grid_mean, grid_rmse = weighted_posterior_rmse(
+                        grid_weights, theta_true
+                    )
                     row = {
                         "epsilon": epsilon,
                         "sample_index": sample_index,
@@ -555,6 +656,29 @@ def main() -> None:
                             clean[sample_index],
                             state_embeddings,
                             adapter.rff,
+                        ),
+                        "grid_posterior_mean": grid_mean,
+                        "grid_rmse": grid_rmse,
+                        "grid_predictive_rff_mmd": (
+                            weighted_predictive_rff_mmd(
+                                grid_weights.numpy().astype(np.float64),
+                                clean[sample_index],
+                                state_embeddings,
+                                adapter.rff,
+                            )
+                        ),
+                        "grid_weight_sum": float(grid_weights.sum()),
+                        "grid_entropy": float(
+                            -torch.sum(
+                                grid_weights
+                                * torch.log(grid_weights.clamp_min(1e-30))
+                            )
+                        ),
+                        "summary_to_clean_l2": float(
+                            torch.linalg.vector_norm(
+                                summary_used.cpu()
+                                - clean_summaries[sample_index].cpu()
+                            )
                         ),
                         "actual_contamination_fraction": float(
                             mask[sample_index].float().mean()
@@ -656,6 +780,12 @@ def main() -> None:
                 "primary": "posterior RMSE against true state, paper exact",
                 "secondary": "squared 1024-RFF posterior-predictive mean-embedding distance",
                 "deviation": "The paper plots exact five-bandwidth predictive MMD. Full exact 15,000-image pairwise kernels per method/test are not CPU-feasible; the secondary metric uses the same full-data RFF kernel approximation as MDS and is not represented as exact MMD.",
+            },
+            "route_2": {
+                "interpretation": "The HSP90 parameter is exactly one of 20 discrete states. Route 2 evaluates the learned continuous NPE density at every admissible state and normalizes those 20 values before computing posterior metrics.",
+                "complete_domain": list(range(N_STATES)),
+                "continuous_sampling_retained": True,
+                "deviation": "The official Figure 4 code samples the continuous spline-flow density. Discrete-state normalization is an independent domain-faithful interpretation and is reported alongside, not substituted for, the official sampling route.",
             },
         }
         (ARTIFACT / "summary.json").write_text(

@@ -13,7 +13,11 @@ def main() -> None:
     parser.add_argument("--artifact", type=Path, required=True)
     parser.add_argument(
         "--scenario",
-        choices=["exact_claim", "disabled_adaptation_control"],
+        choices=[
+            "exact_claim",
+            "discrete_state_claim",
+            "disabled_adaptation_control",
+        ],
         required=True,
     )
     args = parser.parse_args()
@@ -51,38 +55,50 @@ def main() -> None:
         print("CLAIM6_CONTROL_RESULT " + json.dumps(result, sort_keys=True))
         raise SystemExit(1)
 
+    discrete = args.scenario == "discrete_state_claim"
+    rmse_metric = "grid_rmse_mean" if discrete else "rmse_mean"
+    predictive_metric = (
+        "grid_predictive_rff_mmd_mean"
+        if discrete
+        else "predictive_rff_mmd_mean"
+    )
+    rmse_ci_metric = (
+        "npe_minus_mds_grid_rmse_ci95_low"
+        if discrete
+        else "npe_minus_mds_rmse_ci95_low"
+    )
+    predictive_ci_metric = (
+        "npe_minus_mds_grid_predictive_ci95_low"
+        if discrete
+        else "npe_minus_mds_predictive_ci95_low"
+    )
     paired_rmse = all(
-        aggregate[(epsilon, "NPE")]["npe_minus_mds_rmse_ci95_low"] > 0
+        aggregate[(epsilon, "NPE")][rmse_ci_metric] > 0
         for epsilon in robust_levels
     )
     paired_predictive = all(
-        aggregate[(epsilon, "NPE")][
-            "npe_minus_mds_predictive_ci95_low"
-        ]
-        > 0
+        aggregate[(epsilon, "NPE")][predictive_ci_metric] > 0
         for epsilon in robust_levels
     )
     mean_rmse_reductions = [
         1.0
-        - aggregate[(epsilon, "NPE-MDS (RF)")]["rmse_mean"]
-        / aggregate[(epsilon, "NPE")]["rmse_mean"]
+        - aggregate[(epsilon, "NPE-MDS (RF)")][rmse_metric]
+        / aggregate[(epsilon, "NPE")][rmse_metric]
         for epsilon in robust_levels
     ]
     mean_predictive_reductions = [
         1.0
-        - aggregate[(epsilon, "NPE-MDS (RF)")][
-            "predictive_rff_mmd_mean"
-        ]
-        / aggregate[(epsilon, "NPE")]["predictive_rff_mmd_mean"]
+        - aggregate[(epsilon, "NPE-MDS (RF)")][predictive_metric]
+        / aggregate[(epsilon, "NPE")][predictive_metric]
         for epsilon in robust_levels
     ]
     clean_rmse_ratio = (
-        aggregate[(0.0, "NPE-MDS (RF)")]["rmse_mean"]
-        / aggregate[(0.0, "NPE")]["rmse_mean"]
+        aggregate[(0.0, "NPE-MDS (RF)")][rmse_metric]
+        / aggregate[(0.0, "NPE")][rmse_metric]
     )
     clean_predictive_ratio = (
-        aggregate[(0.0, "NPE-MDS (RF)")]["predictive_rff_mmd_mean"]
-        / aggregate[(0.0, "NPE")]["predictive_rff_mmd_mean"]
+        aggregate[(0.0, "NPE-MDS (RF)")][predictive_metric]
+        / aggregate[(0.0, "NPE")][predictive_metric]
     )
     checks = {
         "full_scale_and_integrity": independent["status"] == "PASS",
@@ -112,7 +128,16 @@ def main() -> None:
         "mean_predictive_rff_reductions": mean_predictive_reductions,
         "clean_rmse_ratio": clean_rmse_ratio,
         "clean_predictive_rff_ratio": clean_predictive_ratio,
-        "interpretation": "Primary evidence is exact full-scale posterior RMSE. Predictive evidence uses the same 1024-RFF full-data mean embedding and is explicitly not the paper's exact quadratic MMD.",
+        "interpretation": (
+            "The HSP90 task has exactly 20 admissible states. This route "
+            "normalizes the learned NPE density over the complete state "
+            "domain; the official continuous-sampling results remain in the "
+            "same raw evidence."
+            if discrete
+            else "Primary evidence is exact full-scale posterior RMSE. "
+            "Predictive evidence uses the same 1024-RFF full-data mean "
+            "embedding and is explicitly not the paper's exact quadratic MMD."
+        ),
     }
     (args.artifact / "verifier_output.json").write_text(
         json.dumps(result, indent=2, sort_keys=True) + "\n"

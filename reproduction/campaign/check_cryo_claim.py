@@ -30,6 +30,14 @@ def main() -> None:
         row["sample_index"] = int(row["sample_index"])
         row["rmse"] = float(row["rmse"])
         row["predictive_rff_mmd"] = float(row["predictive_rff_mmd"])
+        row["grid_posterior_mean"] = float(row["grid_posterior_mean"])
+        row["grid_rmse"] = float(row["grid_rmse"])
+        row["grid_predictive_rff_mmd"] = float(
+            row["grid_predictive_rff_mmd"]
+        )
+        row["grid_weight_sum"] = float(row["grid_weight_sum"])
+        row["grid_entropy"] = float(row["grid_entropy"])
+        row["summary_to_clean_l2"] = float(row["summary_to_clean_l2"])
         row["actual_contamination_fraction"] = float(
             row["actual_contamination_fraction"]
         )
@@ -50,6 +58,14 @@ def main() -> None:
             )
             reconstructed[(epsilon, method, "predictive")] = float(
                 np.mean([row["predictive_rff_mmd"] for row in selected])
+            )
+            reconstructed[(epsilon, method, "grid_rmse")] = float(
+                np.mean([row["grid_rmse"] for row in selected])
+            )
+            reconstructed[(epsilon, method, "grid_predictive")] = float(
+                np.mean(
+                    [row["grid_predictive_rff_mmd"] for row in selected]
+                )
             )
     scope = summary["paper_scope"]
     checks = {
@@ -76,7 +92,15 @@ def main() -> None:
         "finite_metrics": all(
             math.isfinite(row["rmse"])
             and math.isfinite(row["predictive_rff_mmd"])
+            and math.isfinite(row["grid_posterior_mean"])
+            and math.isfinite(row["grid_rmse"])
+            and math.isfinite(row["grid_predictive_rff_mmd"])
+            and math.isfinite(row["grid_entropy"])
+            and math.isfinite(row["summary_to_clean_l2"])
             for row in rows
+        ),
+        "discrete_weights_normalized": all(
+            abs(row["grid_weight_sum"] - 1.0) < 1e-6 for row in rows
         ),
         "exact_contamination_fractions": all(
             abs(row["actual_contamination_fraction"] - row["epsilon"]) < 1e-7
@@ -93,6 +117,20 @@ def main() -> None:
                 - float(
                     aggregate[(epsilon, method)][
                         "predictive_rff_mmd_mean"
+                    ]
+                )
+            )
+            < 1e-12
+            and abs(
+                reconstructed[(epsilon, method, "grid_rmse")]
+                - float(aggregate[(epsilon, method)]["grid_rmse_mean"])
+            )
+            < 1e-12
+            and abs(
+                reconstructed[(epsilon, method, "grid_predictive")]
+                - float(
+                    aggregate[(epsilon, method)][
+                        "grid_predictive_rff_mmd_mean"
                     ]
                 )
             )
@@ -137,6 +175,20 @@ def main() -> None:
         | {
             f"eps={epsilon}:{method}:predictive_rff_mmd": reconstructed[
                 (epsilon, method, "predictive")
+            ]
+            for epsilon in EPSILONS
+            for method in METHODS
+        }
+        | {
+            f"eps={epsilon}:{method}:grid_rmse": reconstructed[
+                (epsilon, method, "grid_rmse")
+            ]
+            for epsilon in EPSILONS
+            for method in METHODS
+        }
+        | {
+            f"eps={epsilon}:{method}:grid_predictive_rff_mmd": reconstructed[
+                (epsilon, method, "grid_predictive")
             ]
             for epsilon in EPSILONS
             for method in METHODS

@@ -15,8 +15,11 @@
     "contamination_proportions": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5],
     "methods": ["NPE", "NPE-MDS (RF)"],
     "primary_metric": "posterior RMSE against the true HSP90 state",
-    "secondary_metric": "squared 1024-RFF posterior-predictive mean-embedding distance"
+    "secondary_metric": "squared 1024-RFF posterior-predictive mean-embedding distance",
+    "route_2_posterior": "evaluate the trained NPE density on the complete admissible state domain {0,...,19} and normalize those 20 density values"
   },
+  "route_2_interpretation": "The task prior and simulator parameter are exactly discrete over 20 HSP90 states. Route 2 tests the claim on that complete finite domain while retaining the official continuous spline-flow sampling metrics in the same raw output.",
+  "route_2_deviation": "The authors' Figure 4 implementation samples the continuous spline-flow density even though the parameter is discrete. The normalized state-grid posterior is an independent domain-faithful interpretation, not a claim that the official code used grid normalization.",
   "preregistered_decision_rule": {
     "verified": "The independent full-scale integrity checker passes; paired 95% bootstrap intervals for NPE-minus-MDS RMSE and predictive RFF distance are wholly above zero at every epsilon in {0.2,0.3,0.4,0.5}; mean relative reduction across those levels is at least 30% for RMSE and 5% for predictive RFF distance; and both MDS/NPE mean metric ratios at epsilon=0 are at most 1.10.",
     "falsified": "Not assigned from a single stochastic retraining. A failure to meet the verification thresholds is BLOCKED and requires independent routes before any falsification claim.",

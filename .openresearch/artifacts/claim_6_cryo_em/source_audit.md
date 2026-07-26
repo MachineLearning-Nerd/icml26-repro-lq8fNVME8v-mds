@@ -32,6 +32,17 @@ Retrieval date: 2026-07-25
 - The official benchmark fits RFF-MDS on the first 10,000 Cryo training
   datasets and reserves 5% for calibration.
 
+## Route 2 interpretation audit
+
+The paper's appendix states a discrete uniform prior over exactly 20
+conformational indices, and the simulator accepts those integer state indices.
+The released NPE nevertheless uses a continuous one-dimensional spline flow
+and Figure 4 obtains posterior means from continuous samples. Route 2
+independently evaluates the learned density on the complete stated parameter
+domain `{0,...,19}` and normalizes those 20 values. This interpretation is
+exhaustive over the paper's discrete prior but is explicitly recorded as a
+deviation from the released continuous-sampling evaluator.
+
 ## Source discrepancies
 
 The paper's general RFF implementation paragraph says 512 features for all

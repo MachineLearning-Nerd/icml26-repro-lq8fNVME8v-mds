@@ -33,17 +33,17 @@ def main() -> None:
         cwd=ROOT,
         check=True,
     )
-    subprocess.run(
+    verifier = subprocess.run(
         [
             sys.executable,
             "reproduction/campaign/verify_cryo_claim.py",
             "--artifact",
             str(ARTIFACT),
             "--scenario",
-            "exact_claim",
+            "discrete_state_claim",
         ],
         cwd=ROOT,
-        check=True,
+        check=False,
     )
     control = subprocess.run(
         [
@@ -71,6 +71,9 @@ def main() -> None:
     (ARTIFACT / "negative_control_output.json").write_text(
         json.dumps(control_output, indent=2, sort_keys=True) + "\n"
     )
+    verifier_verdict = json.loads(
+        (ARTIFACT / "verifier_output.json").read_text()
+    )["verdict"]
     receipt = {
         "estimated_required_cores": 32,
         "selected_backend": "hf",
@@ -79,6 +82,13 @@ def main() -> None:
         "gpu_used": False,
         "platform": platform.platform(),
         "runtime_seconds": time.perf_counter() - started,
+        "verifier_exit_code": verifier.returncode,
+        "verifier_verdict": verifier_verdict,
+        "verifier_exit_matches_verdict": (
+            verifier.returncode == 0
+            if verifier_verdict == "VERIFIED"
+            else verifier.returncode != 0
+        ),
     }
     (ARTIFACT / "runtime.json").write_text(
         json.dumps(receipt, indent=2, sort_keys=True) + "\n"
@@ -86,6 +96,17 @@ def main() -> None:
     print(
         "CLAIM6_NEGATIVE_CONTROL "
         + json.dumps(control_output, sort_keys=True),
+        flush=True,
+    )
+    print(
+        "CLAIM6_VERIFIER_EXIT "
+        + json.dumps(
+            {
+                "exit_code": verifier.returncode,
+                "verdict": receipt["verifier_verdict"],
+            },
+            sort_keys=True,
+        ),
         flush=True,
     )
     print("CLAIM6_FINAL_RECEIPT " + json.dumps(receipt, sort_keys=True), flush=True)

@@ -24,6 +24,22 @@ test dataset; posterior weights use all 2,000 samples. It is a faithful
 full-data approximation under the same RBF/RFF kernel as MDS, but it is not
 called the paper's exact quadratic five-bandwidth MMD.
 
+## Route 2: complete discrete-state posterior
+
+The simulator parameter and prior are exactly discrete over the 20 HSP90
+states `{0,...,19}`. The first route followed the authors' implementation and
+sampled the continuous spline-flow density. Route 2 additionally evaluates
+that same frozen learned density at every one of the 20 admissible states and
+normalizes the 20 density values. Posterior mean, RMSE, predictive RFF
+distance, entropy, and weight normalization are then reconstructed from the
+complete finite domain. No state is omitted and no Monte Carlo posterior
+sample is used for this route.
+
+Both interpretations are emitted in every raw trial row. The grid route is an
+independent domain-faithful reading of the discrete task, not a claim that the
+authors' Figure 4 runner used grid normalization. The same preregistered effect
+and clean-regime thresholds are applied to the grid metrics.
+
 ## Memory-preserving equivalence
 
 The first 10,000 raw training datasets are stored in a temporary 4.096 GB

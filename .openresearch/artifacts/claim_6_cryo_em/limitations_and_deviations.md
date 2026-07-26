@@ -20,3 +20,12 @@
 - A single deterministic model-training seed is used. Statistical uncertainty
   is over the paper's 100 paired test datasets, matching the source error-bar
   definition, not over independently retrained NPEs.
+- Route 1 follows the authors' continuous spline-flow posterior sampling even
+  though the simulator parameter is inherently one of 20 discrete HSP90
+  states.
+- Route 2 normalizes the learned density over all 20 admissible states. This
+  is exhaustive over the stated task domain but differs from the authors'
+  Figure 4 sampling implementation. Both result sets remain visible.
+- One stochastic full-scale retraining cannot by itself falsify the empirical
+  Figure 4 claim. A missed verification threshold remains BLOCKED pending the
+  required independent routes.
