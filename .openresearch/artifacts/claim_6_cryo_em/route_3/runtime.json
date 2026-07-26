@@ -1,0 +1,12 @@
+{
+  "actual_cpu_allocation_logical": 8,
+  "estimated_required_cores": 4,
+  "gpu_used": false,
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "runtime_seconds": 0.30998804098635446,
+  "selected_backend": "hf",
+  "selected_flavor": "cpu-upgrade",
+  "verifier_exit_code": 1,
+  "verifier_exit_matches_verdict": true,
+  "verifier_verdict": "BLOCKED"
+}

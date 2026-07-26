@@ -1,0 +1,6 @@
+{
+  "actual_exit_code": 1,
+  "captured_output": "CLAIM6_ROUTE4_CONTROL {\"checks\": {\"authors_exact_saved_realization_available\": false, \"exact_universal_quantifier_contradicted\": false, \"full_scale_reproduction_disagrees_with_figure\": true}, \"reason\": \"A failed reproduction is not a valid falsification when the paper reports a finite empirical realization and does not universally quantify over retraining seeds.\", \"scenario\": \"failed_reproduction_as_falsification_control\", \"status\": \"FAIL\", \"verdict\": \"NOT_FALSIFIED\"}\n",
+  "expected_nonzero_exit": true,
+  "status": "PASS"
+}

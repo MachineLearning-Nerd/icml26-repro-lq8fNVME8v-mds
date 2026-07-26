@@ -1,0 +1,6 @@
+{
+  "actual_exit_code": 1,
+  "captured_output": "CLAIM5_CONTROL_RESULT {\"checks\": {\"disabled_mds_is_npe\": true, \"disabled_mds_strictly_beats_npe\": false, \"disabled_minus_npe_means\": [0.0, 0.0, 0.0]}, \"reason\": \"The disabled estimator is reconstructed from the observed NPE rows. Its paired NPE-minus-disabled-MDS difference is identically zero, so the required MDS improvement cannot pass.\", \"scenario\": \"disabled_adaptation_control\", \"status\": \"FAIL\", \"verdict\": \"NOT_FALSIFIED\"}\n",
+  "expected_nonzero_exit": true,
+  "status": "PASS"
+}

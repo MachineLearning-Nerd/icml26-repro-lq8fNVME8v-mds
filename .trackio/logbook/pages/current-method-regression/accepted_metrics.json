@@ -1,0 +1,45 @@
+{
+  "claim_1": {
+    "verdict": "VERIFIED",
+    "gaussian": {
+      "npe_parameters": 4418,
+      "paired_queries": 300,
+      "tensor_sha256_before_after": "38161a0ab9d3dfc5b0893964094d4c062298d16d41a62890b03e8ce657fba5aa"
+    },
+    "oup": {
+      "npe_parameters": 17540,
+      "paired_queries": 250,
+      "tensor_sha256_before_after": "4e856211d806c14961078b3b8e0469f5a1db151d9afebdb785c1b4b91407ff50"
+    }
+  },
+  "claim_2": {
+    "verdict": "VERIFIED",
+    "paper_rff_dimension": 512,
+    "regressor": "2x256",
+    "gaussian": {
+      "offline_fit_seconds": 5.702,
+      "final_embedding_mse": 2.53e-06,
+      "median_adaptation_ms": 7.186,
+      "p95_adaptation_ms": 11.999
+    },
+    "oup": {
+      "offline_fit_seconds": 1.687,
+      "nonzero_contamination_median_adaptation_ms": 137.877,
+      "worst_level_p95_adaptation_ms": 166.502
+    },
+    "negative_boundary": {
+      "epsilon": 0.5,
+      "rff_exact_summary_gap": 3.818,
+      "expected": "single-start optimizer can select the wrong mode"
+    }
+  },
+  "source": {
+    "paper_tex_sha256": "ff81fd973e3bcba86fb23e9a0c102ec88e240f62361315c7875de54e29ea4fd2",
+    "official_repo_commit": "45158124f0cbdc2f6c1ac602c9fc5501dce20af3"
+  },
+  "formal_cumulative_run": {
+    "run_id": "fd04a075-47dd-487c-a947-c6972227a67b",
+    "git_sha": "41ec2e32d267e6944c04cc766c495f59a3071fdb",
+    "fixed_command": "git submodule update --init --recursive && uv sync --frozen && uv run python reproduction/run_all.py"
+  }
+}

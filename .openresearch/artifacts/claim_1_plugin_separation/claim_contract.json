@@ -1,0 +1,11 @@
+{
+  "claim": "MDS adapts the query summary at test time while keeping the pretrained neural posterior estimator fixed, preserving amortization.",
+  "quantifier": "For both reproduced Gaussian and OUP mechanisms, every ordinary/MDS paired query must use an identical frozen NPE tensor state.",
+  "required_checks": [
+    "NPE tensor SHA-256 is identical before and after adaptation",
+    "Gaussian and OUP use trained neural posterior estimators",
+    "at least 300 Gaussian and 250 OUP paired queries execute",
+    "the verifier exits nonzero on a hash or query-count mismatch"
+  ],
+  "verdict": "VERIFIED"
+}

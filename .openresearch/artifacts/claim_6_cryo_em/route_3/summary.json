@@ -1,0 +1,77 @@
+{
+  "calibration": {
+    "predictive_mmd": {
+      "intercept": 0.029763646250215568,
+      "max_tick_residual": 6.938893903907228e-18,
+      "slope": 6.379934951459219e-05,
+      "tick_coordinates": [
+        35.052924,
+        66.401206,
+        97.749488,
+        129.09777
+      ],
+      "tick_values": [
+        0.032,
+        0.034,
+        0.036,
+        0.038
+      ]
+    },
+    "rmse": {
+      "intercept": 0.3460657462309511,
+      "max_tick_residual": 0.00012406023219480034,
+      "slope": 0.06244320751713089,
+      "tick_coordinates": [
+        26.485692,
+        42.502893,
+        58.515458,
+        74.532659,
+        90.545225,
+        106.55779,
+        122.574991
+      ],
+      "tick_values": [
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0
+      ]
+    }
+  },
+  "clean_predictive_mmd_ratio": 0.9998292365395667,
+  "clean_rmse_ratio": 1.0065249504681462,
+  "curve_count": 8,
+  "paper_contract_supported": true,
+  "predictive_mmd_reductions_eps_0p2_to_0p5": [
+    0.0963002961333721,
+    0.11853602079218861,
+    0.1307299555733008,
+    0.12932538487374712
+  ],
+  "raw_sha256": "453d8ff35943196b44ba8b2fc084b809b15ef32ba4e220f2779e664162125103",
+  "reason": "The exact paper figure supports the claim, but source reconstruction is not independent experimental verification.",
+  "reproducibility": {
+    "fixed_command": "git submodule update --init --recursive && uv sync --frozen && uv run python reproduction/run_all.py",
+    "git_sha": "cafadfb1c866f05547286414843ccb4286907e2c"
+  },
+  "rmse_reductions_eps_0p2_to_0p5": [
+    0.6303317553332742,
+    0.5876765808998695,
+    0.5893309575054868,
+    0.5844075911806581
+  ],
+  "route": 3,
+  "row_count": 48,
+  "runtime_seconds": 0.09164737499668263,
+  "scientific_verdict": "BLOCKED",
+  "source": {
+    "page": 8,
+    "pdf_sha256": "1fc774ab166496d0861720b14212204c46cf920dc22c5df006d1d48f5eba01f0",
+    "svg_bytes": 1160315,
+    "svg_sha256": "3af5f50d997e28e465cb7c42b69fa5dd57744a802f2a1fb704266163a2e6255e"
+  },
+  "status": "SOURCE_FIGURE_CORROBORATED"
+}

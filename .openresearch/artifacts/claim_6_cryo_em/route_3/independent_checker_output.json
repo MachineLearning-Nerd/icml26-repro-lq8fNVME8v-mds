@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "all_eight_curves": true,
+    "complete_factorial": true,
+    "exact_epsilon_x_grids": true,
+    "exact_pdf_hash": true,
+    "exact_row_count": true,
+    "exact_svg_hash": true,
+    "finite_values": true,
+    "independent_axis_reconstruction": true,
+    "intervals_ordered": true,
+    "paper_contract_supported": true,
+    "provenance_complete": true,
+    "summary_raw_hash": true
+  },
+  "reconstructed_headline": {
+    "clean_rmse_mds": 4.59947892817405,
+    "clean_rmse_npe": 4.569662109254997,
+    "epsilon_0p5_rmse_mds": 3.266407489879865,
+    "epsilon_0p5_rmse_npe": 7.859641852360622
+  },
+  "status": "PASS"
+}

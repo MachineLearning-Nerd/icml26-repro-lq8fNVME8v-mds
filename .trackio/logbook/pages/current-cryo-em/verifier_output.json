@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "evidence_integrity": true,
+    "valid_assumption_satisfying_counterexample": false
+  },
+  "reason": "No candidate both satisfies the exact empirical claim contract and contradicts an exact quantified statement. The full-scale discrepancy is preserved as evidence, not mislabeled as falsification.",
+  "scenario": "falsification_qualification",
+  "status": "FAIL",
+  "verdict": "BLOCKED"
+}

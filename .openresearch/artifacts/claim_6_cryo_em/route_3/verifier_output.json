@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "independent_experimental_evidence": false,
+    "published_clean_predictive_within_10pct": true,
+    "published_clean_rmse_within_10pct": true,
+    "published_predictive_effect_meets_contract": true,
+    "published_rmse_effect_meets_contract": true,
+    "source_and_extraction_integrity": true
+  },
+  "reason": "The vector reconstruction rigorously verifies what Figure 4 displays, but it is evidence from the paper itself and cannot independently verify the empirical claim.",
+  "scenario": "source_figure",
+  "status": "FAIL",
+  "verdict": "BLOCKED"
+}

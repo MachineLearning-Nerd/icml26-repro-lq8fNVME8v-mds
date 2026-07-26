@@ -1,0 +1,7 @@
+{
+  "status": "EXPECTED_FAILURE",
+  "control": "Set the paper RFF dimension to 64 and invoke verifier.py with the corrupted receipt.",
+  "observed_exit_code": 1,
+  "scientific_boundary": "At epsilon 0.5 the single-start optimizer can select the wrong mode.",
+  "rff_exact_summary_gap": 3.818
+}

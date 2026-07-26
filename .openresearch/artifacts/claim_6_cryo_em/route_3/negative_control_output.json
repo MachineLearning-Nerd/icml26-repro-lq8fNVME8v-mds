@@ -1,0 +1,6 @@
+{
+  "actual_exit_code": 1,
+  "captured_output": "CLAIM6_ROUTE3_CONTROL {\"checks\": {\"disabled_mds_is_npe\": true, \"disabled_mds_strictly_improves\": false}, \"reason\": \"Assigning the NPE curve to disabled MDS gives zero improvement and cannot satisfy the published robustness effect.\", \"scenario\": \"disabled_adaptation_control\", \"status\": \"FAIL\", \"verdict\": \"NOT_VERIFIED\"}\n",
+  "expected_nonzero_exit": true,
+  "status": "PASS"
+}

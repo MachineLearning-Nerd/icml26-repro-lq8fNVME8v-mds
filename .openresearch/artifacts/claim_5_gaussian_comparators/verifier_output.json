@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "full_scale_and_integrity": true,
+    "mds_beats_npe_and_nnpe_below_40pct": true,
+    "mds_degrades_at_50pct": true,
+    "npe_or_contradicts_all_comparator_gloss_before_40pct": true
+  },
+  "interpretation": "The stronger imported gloss says MDS beats NPE, NNPE, and NPE-OR through sub-40% contamination. A paired 95% CI showing NPE-OR strictly better at any prespecified sub-40% level falsifies it. This does not contradict the paper's narrower 'in general' wording.",
+  "scenario": "exact_imported_contract",
+  "status": "PASS",
+  "verdict": "FALSIFIED"
+}

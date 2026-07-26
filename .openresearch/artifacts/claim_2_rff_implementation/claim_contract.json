@@ -1,0 +1,12 @@
+{
+  "claim": "MDS uses Gaussian-kernel MMD with random Fourier features, an offline MSE-trained decoder mean-embedding network, and test-time L-BFGS.",
+  "required_checks": [
+    "paper-scale 512 random Fourier features",
+    "RBFSampler and empirical feature embeddings",
+    "conditional embedding regressor trained with MSE",
+    "test-time L-BFGS with strong-Wolfe",
+    "measured offline fit and adaptation runtime",
+    "verifier exits nonzero when a required mechanism is absent"
+  ],
+  "verdict": "VERIFIED"
+}

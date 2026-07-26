@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "gaussian_parameters": 4418,
+  "gaussian_paired_queries": 300,
+  "gaussian_tensor_hash_identical": true,
+  "oup_parameters": 17540,
+  "oup_paired_queries": 250,
+  "oup_tensor_hash_identical": true,
+  "checker": "reproduction/integrate_neural_upgrade.py",
+  "run_id": "fd04a075-47dd-487c-a947-c6972227a67b"
+}

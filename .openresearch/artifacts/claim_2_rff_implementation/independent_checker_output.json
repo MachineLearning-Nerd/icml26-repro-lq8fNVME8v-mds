@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "mechanisms_checked": 7,
+  "rff_dimension": 512,
+  "regressor": "2x256",
+  "gaussian_final_embedding_mse": 0.00000253,
+  "gaussian_median_adaptation_ms": 7.186,
+  "oup_nonzero_contamination_median_adaptation_ms": 137.877,
+  "checker": "reproduction/test_reproduction.py and reproduction/integrate_neural_upgrade.py",
+  "run_id": "fd04a075-47dd-487c-a947-c6972227a67b"
+}

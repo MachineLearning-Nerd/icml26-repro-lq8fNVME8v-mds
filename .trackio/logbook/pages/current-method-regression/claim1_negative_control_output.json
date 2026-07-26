@@ -1,0 +1,6 @@
+{
+  "status": "EXPECTED_FAILURE",
+  "control": "Set the Gaussian paired-query count to 1 and invoke verifier.py with the corrupted receipt.",
+  "expected_failure_condition": "mutated NPE state or insufficient paired queries",
+  "observed_exit_code": 1
+}

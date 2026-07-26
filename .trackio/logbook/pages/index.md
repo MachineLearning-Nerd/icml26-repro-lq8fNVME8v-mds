@@ -4,11 +4,17 @@
 
 | Page | Current status |
 | --- | --- |
+| [Release assessment and visibility matrix](#/current-release-assessment) | **FORECAST ONLY — live score remains 7/12** |
+| [Claims 1 and 2 cumulative regression](#/current-method-regression) | **VERIFIED / VERIFIED** |
 | [Theorem 4.1 — exact-assumption counterexample](#/current-theorem-4-1) | **FALSIFIED** |
 | [Theorem 4.2 — exact-assumption counterexample](#/current-theorem-4-2) | **FALSIFIED** |
+| [Gaussian full comparator claim](#/current-gaussian-comparators) | **FALSIFIED** |
+| [1024-dimensional Cryo-EM claim](#/current-cryo-em) | **BLOCKED after four routes** |
 
-The current page above supersedes the older finite special-case theory audit.
-The historical files are preserved below for provenance.
+The current pages above supersede the older finite special-case theory and
+partial Gaussian audits. This is an additive update to the existing
+`DineshAI/lq8fNVME8v` logbook. Historical files are preserved below for
+provenance; no new logbook or Space is being created.
 
 ## Historical rejected baseline
 

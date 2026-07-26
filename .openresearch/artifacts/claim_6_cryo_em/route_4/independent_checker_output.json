@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "aggregate_reconstructed": true,
+    "complete_factorial": true,
+    "exact_route1_raw_hash": true,
+    "exact_row_count": true,
+    "extraction_matches_formal_summary": true,
+    "finite_rmse": true,
+    "honest_blocked_verdict": true,
+    "no_candidate_mislabeled_falsification": true,
+    "no_exact_quantifier_contradicted": true,
+    "provenance_complete": true,
+    "quantifier_explicitly_classified": true,
+    "three_materially_different_candidates": true
+  },
+  "reconstructed_rmse_means": {
+    "eps=0.0:NPE": 4.072695491313934,
+    "eps=0.0:NPE-MDS (RF)": 5.849004039764404,
+    "eps=0.1:NPE": 5.214717044830322,
+    "eps=0.1:NPE-MDS (RF)": 5.847305374145508,
+    "eps=0.2:NPE": 6.004062662124634,
+    "eps=0.2:NPE-MDS (RF)": 5.836822576522827,
+    "eps=0.3:NPE": 6.395094203948974,
+    "eps=0.3:NPE-MDS (RF)": 5.854234209060669,
+    "eps=0.4:NPE": 6.379741325378418,
+    "eps=0.4:NPE-MDS (RF)": 5.85972393989563,
+    "eps=0.5:NPE": 6.278079690933228,
+    "eps=0.5:NPE-MDS (RF)": 5.899407367706299
+  },
+  "status": "PASS"
+}

@@ -10,12 +10,24 @@
     "icml2026-repro",
     "paper-lq8fNVME8v"
   ],
-  "updated_at": "2026-07-16T15:54:31+00:00",
+  "updated_at": "2026-07-26T00:00:00+00:00",
   "root": {
     "slug": "index",
     "title": "Repro - Minimum Distance Summaries for Robust NPE",
     "file": "pages/index.md",
     "children": [
+      {
+        "slug": "current-release-assessment",
+        "title": "Current release assessment and visibility matrix",
+        "file": "pages/current-release-assessment/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-method-regression",
+        "title": "Current cumulative regression - Claims 1 and 2",
+        "file": "pages/current-method-regression/page.md",
+        "children": []
+      },
       {
         "slug": "current-theorem-4-1",
         "title": "Current verification - Theorem 4.1",
@@ -26,6 +38,18 @@
         "slug": "current-theorem-4-2",
         "title": "Current verification - Theorem 4.2",
         "file": "pages/current-theorem-4-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-gaussian-comparators",
+        "title": "Current verification - Gaussian full comparators",
+        "file": "pages/current-gaussian-comparators/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-cryo-em",
+        "title": "Current verification - 1024D Cryo-EM",
+        "file": "pages/current-cryo-em/page.md",
         "children": []
       },
       {
@@ -72,6 +96,6 @@
       }
     ]
   },
-  "agent_view_tokens": 8884,
-  "revision": "1784217271763760846"
+  "agent_view_tokens": 15000,
+  "revision": "1785024000000000000"
 }

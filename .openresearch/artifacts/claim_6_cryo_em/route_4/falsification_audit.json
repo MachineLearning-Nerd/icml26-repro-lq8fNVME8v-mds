@@ -1,0 +1,82 @@
+{
+  "candidates": [
+    {
+      "assumptions": {
+        "100_images_32x32": true,
+        "Gaussian_noise_replacement": true,
+        "HSP90_20_state_task": true,
+        "official_RFF_MDS_algorithm": true,
+        "test_datasets_100": true,
+        "training_datasets_15000": true
+      },
+      "candidate": "full_scale_independent_retraining_seed_42",
+      "contradicts_exact_quantified_statement": false,
+      "external_capability": {
+        "authors_exact_saved_training_and_test_realization_available": false
+      },
+      "observed": {
+        "clean_mds_over_npe_rmse": 1.4361505917245478,
+        "meets_preregistered_effect_contract": false,
+        "rmse_reductions_eps_0p2_to_0p5": [
+          0.027854487038718845,
+          0.08457420291859408,
+          0.08151073201262482,
+          0.06031658434884246
+        ]
+      },
+      "reason": "This is a strong exact-protocol reproduction discrepancy, but the paper gives no universal seed/realization quantifier and does not release the exact Figure 4 checkpoint or data realization.",
+      "valid_falsification": false
+    },
+    {
+      "assumptions": {
+        "query_from_exact_full_scale_run": true,
+        "same_aggregate_100_test_estimand_as_Figure_4": false
+      },
+      "candidate": "worst_valid_single_query",
+      "contradicts_exact_quantified_statement": false,
+      "observed": {
+        "epsilon": 0.3,
+        "mds_minus_npe_rmse": 3.0458126068115234,
+        "sample_index": 17
+      },
+      "reason": "Figure 4 reports an aggregate over 100 tests; it does not assert pointwise improvement for every query.",
+      "valid_falsification": false
+    },
+    {
+      "assumptions": {
+        "implements_named_MDS_algorithm": false,
+        "uses_paper_normalized_Gaussian_contamination": false
+      },
+      "candidate": "disabled_MDS_or_altered_noise_control",
+      "contradicts_exact_quantified_statement": false,
+      "observed": {
+        "would_remove_adaptation_or_change_contamination": true
+      },
+      "reason": "Changing the algorithm or contamination violates the claim contract and cannot falsify the paper.",
+      "valid_falsification": false
+    }
+  ],
+  "exact_claim": {
+    "domain": "HSP90; 20-state discrete-uniform prior; datasets of 100 32x32 images; epsilon in {0,.1,...,.5}; normalized pure Gaussian-noise image replacement; 100 test datasets.",
+    "falsification_requirement": "A valid falsification must establish that the exact reported Figure 4 experiment cannot have the stated effect, or contradict an explicit universal quantifier. A different exact-protocol retraining, a single bad query, or an assumption-violating contamination is insufficient.",
+    "quantifier": "Finite empirical report tied to the authors' Figure 4. The source does not universally quantify over every training seed, simulator realization, valid test set, or query.",
+    "source_anchor": "arxiv_main.tex lines 423-433, Section 6.3, Figure 4",
+    "text": "Despite the high dimensionality and severe nature of the contamination, MDS is able to substantially improve the robustness of the NPE to contamination (Figure 4)."
+  },
+  "falsification_succeeded": false,
+  "reason": "No candidate both satisfies the exact empirical claim contract and contradicts an exact quantified statement. The full-scale discrepancy is preserved as evidence, not mislabeled as falsification.",
+  "reproducibility": {
+    "fixed_command": "git submodule update --init --recursive && uv sync --frozen && uv run python reproduction/run_all.py",
+    "git_sha": "41ec2e32d267e6944c04cc766c495f59a3071fdb"
+  },
+  "route": 4,
+  "runtime_seconds": 0.00991660391446203,
+  "source": {
+    "route_1_commit": "fbe0df8380d3ff461c3694b28e53dd6d93d5f6da",
+    "route_1_raw_sha256": "ef27c8f5d79c1cc225d1fba328c3f4de86f0b3bf914b7da1de47797dac3150de",
+    "route_1_run_id": "1df5f0be-40f8-495f-bf0c-ea9ada0ebc9f",
+    "route_1_summary_sha256": "f80cff6ce127a5c8000aa712461f48a7e478202d97273b276e75eac71068d70c",
+    "tex_sha256": "ff81fd973e3bcba86fb23e9a0c102ec88e240f62361315c7875de54e29ea4fd2"
+  },
+  "verdict": "BLOCKED"
+}

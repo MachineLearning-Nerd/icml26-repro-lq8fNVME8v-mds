@@ -1,0 +1,16 @@
+{
+  "candidate_files": 71,
+  "protected_changed_additively": [
+    "README.md",
+    "logbook.json",
+    "pages/index.md"
+  ],
+  "protected_file_set_is_subset": true,
+  "protected_files": 19,
+  "protected_same_hash": 16,
+  "relative_links_checked": true,
+  "secrets_scan": "PASS",
+  "status": "PASS",
+  "upload_text_files": 55,
+  "visibility_claim_rows": 6
+}

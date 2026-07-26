@@ -1,0 +1,33 @@
+{
+  "actual_cpu_allocation_logical": 64,
+  "commands": [
+    "/repo/.venv/bin/python3 reproduction/reproduce_mds.py",
+    "/repo/.venv/bin/python3 reproduction/audit_dimension_general_proof.py",
+    "/repo/.venv/bin/python3 reproduction/neural_npe_upgrade.py",
+    "/repo/.venv/bin/python3 reproduction/integrate_neural_upgrade.py",
+    "/repo/.venv/bin/python3 -m unittest -v reproduction/test_reproduction.py",
+    "/repo/.venv/bin/python3 reproduction/campaign/run_theorem_4_1.py",
+    "/repo/.venv/bin/python3 reproduction/campaign/run_theorem_4_2.py",
+    "/repo/.venv/bin/python3 reproduction/campaign/run_gaussian_comparators.py",
+    "/repo/.venv/bin/python3 reproduction/campaign/run_cryo_claim.py"
+  ],
+  "contract": "cumulative claims 1-6 reproduction",
+  "estimated_required_cores": 6,
+  "gpu_used": false,
+  "platform": "Linux-6.12.90-120.164.amzn2023.x86_64-x86_64-with-glibc2.36",
+  "python": "3.12.12 (main, Feb  3 2026, 03:12:00) [GCC 12.2.0]",
+  "runtime_seconds": 1709.1120719480095,
+  "selected_backend": "hf",
+  "selected_flavor": "cpu-upgrade",
+  "subcommand_runtime_seconds": [
+    22.641282217926346,
+    0.04386400792282075,
+    29.061619464075193,
+    0.031994833960197866,
+    0.3708041120553389,
+    0.8852462409995496,
+    0.15734635095577687,
+    1655.683625516016,
+    0.2339112089248374
+  ]
+}

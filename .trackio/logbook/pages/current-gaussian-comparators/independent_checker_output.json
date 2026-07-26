@@ -1,0 +1,38 @@
+{
+  "checks": {
+    "aggregate_reconstructed": true,
+    "all_metrics_finite": true,
+    "complete_factorial": true,
+    "exact_comparator_settings": true,
+    "exact_paper_dimensions": true,
+    "exact_row_count": true,
+    "nnpe_frozen": true,
+    "raw_hash_matches": true,
+    "reproducibility_receipt_complete": true,
+    "sample_indices_complete": true,
+    "standard_npe_frozen": true
+  },
+  "reconstructed_means": {
+    "eps=0.0:NNPE": 0.5855494529008866,
+    "eps=0.0:NPE": 0.10017786860466003,
+    "eps=0.0:NPE-MDS (RF)": 0.08459387481212616,
+    "eps=0.0:NPE-OR": 0.6062821370363235,
+    "eps=0.1:NNPE": 1.0634852319955825,
+    "eps=0.1:NPE": 1.5784093004465103,
+    "eps=0.1:NPE-MDS (RF)": 0.4084435647726059,
+    "eps=0.1:NPE-OR": 0.7594200599193573,
+    "eps=0.2:NNPE": 1.7337580347061157,
+    "eps=0.2:NPE": 2.943823907971382,
+    "eps=0.2:NPE-MDS (RF)": 1.0590546876192093,
+    "eps=0.2:NPE-OR": 0.8809785723686219,
+    "eps=0.3:NNPE": 2.491496301293373,
+    "eps=0.3:NPE": 4.002649155259133,
+    "eps=0.3:NPE-MDS (RF)": 2.0755641508102416,
+    "eps=0.3:NPE-OR": 1.0626296716928483,
+    "eps=0.5:NNPE": 3.623589203953743,
+    "eps=0.5:NPE": 5.184083938002586,
+    "eps=0.5:NPE-MDS (RF)": 4.710321968197823,
+    "eps=0.5:NPE-OR": 1.5444203478097915
+  },
+  "status": "PASS"
+}
