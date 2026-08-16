@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If this reproduction or its audit artifacts help your work, please cite both this repository and the original paper."
+title: "Minimum Distance Summaries for Robust Neural Posterior Estimation: ICML 2026 Reproduction"
+type: software
+authors:
+  - family-names: Khoo
+    given-names: Sherman
+  - family-names: Prangle
+    given-names: Dennis
+  - family-names: Liu
+    given-names: Song
+  - family-names: Beaumont
+    given-names: Mark
+repository-code: "https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries"
+url: "https://arxiv.org/abs/2602.09161"
+keywords:
+  - simulation-based inference
+  - neural posterior estimation
+  - robust statistics
+  - maximum mean discrepancy
+  - random Fourier features
+  - reproducibility
+preferred-citation:
+  type: article
+  title: "Minimum Distance Summaries for Robust Neural Posterior Estimation"
+  authors:
+    - family-names: Khoo
+      given-names: Sherman
+    - family-names: Prangle
+      given-names: Dennis
+    - family-names: Liu
+      given-names: Song
+    - family-names: Beaumont
+      given-names: Mark
+  year: 2026
+  journal: "Proceedings of the 43rd International Conference on Machine Learning"
+  url: "https://arxiv.org/abs/2602.09161"

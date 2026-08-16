@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "title": "Minimum Distance Summaries for Robust Neural Posterior Estimation",
+    "arxiv": "2602.09161v2",
+    "openreview": "lq8fNVME8v",
+    "pdf_sha256": "1fc774ab166496d0861720b14212204c46cf920dc22c5df006d1d48f5eba01f0",
+    "tex_sha256": "ff81fd973e3bcba86fb23e9a0c102ec88e240f62361315c7875de54e29ea4fd2"
+  },
+  "official_sources": {
+    "repository": "https://github.com/Shermjj/Minimum-Distance-Summaries",
+    "repository_commit": "45158124f0cbdc2f6c1ac602c9fc5501dce20af3",
+    "rff_sha256": "0a7e8a2261c9ab9f8b327c01335dd7ff9cb7d5efd48abcf1980bf9c125d329b9",
+    "cryoSBI_commit": "8e5832ecda626e9ab58d18cb215b5db6789533ee"
+  },
+  "collection_status": "VERIFIED_SCOPED_WITH_FALSIFIED_THEOREMS_AND_BLOCKED_CRYO_CLAIM",
+  "evidence": [
+    {
+      "claim": 1,
+      "path": "outputs/full/neural_upgrade_summary.json",
+      "sha256": "dc0b948e347cb02a52f1a3088a13864f8929081404f760c7141c143297b9b58e"
+    },
+    {
+      "claim": 1,
+      "path": "outputs/full/neural_gaussian_aggregate.csv",
+      "sha256": "9d763809165a7ee94669f956ae1e83d0f093d847a977a9cd6b96b858788127dc"
+    },
+    {
+      "claim": 1,
+      "path": "outputs/full/neural_oup_aggregate.csv",
+      "sha256": "44593b5cb954b1846b14a3638581648787117866a74fa526083584339d3fe516"
+    },
+    {
+      "claim": 2,
+      "path": "outputs/full/source_and_code_audit.json",
+      "sha256": "d4416b826c5f25d8a75d60580d76fe162f86e0192ab8abc469662df3dc40af9b"
+    },
+    {
+      "claim": 2,
+      "path": "outputs/full/experiment_summary.json",
+      "sha256": "03661e6ffdf8409ba085a986e8b1ec48974d3b53f5c8618a571e20d84bede455"
+    },
+    {
+      "claim": 3,
+      "path": ".openresearch/artifacts/claim_3_theorem_4_1/formal_results.json",
+      "sha256": "04f19eecd1b9f4c657612fc51127aab8a3fe2cbff23f204f7644b80a5c9b2f5b"
+    },
+    {
+      "claim": 4,
+      "path": ".openresearch/artifacts/claim_4_theorem_4_2/formal_result.json",
+      "sha256": "b723cc5ae9ec0d639cfbcbd51a7a2c4b7cd58ca949ec8286b7008bf758edc5ac"
+    },
+    {
+      "claim": 5,
+      "path": "outputs/full/gaussian_trials.csv",
+      "sha256": "2482b6dc5ad8db322347bbb8268dd51c7c00762ae67e625fc82b2c00b417b95c"
+    },
+    {
+      "claim": 5,
+      "path": "outputs/full/gaussian_aggregate.csv",
+      "sha256": "6d2df4a7a9ff03a2c81c07cff155b0f47ce657f4fef46133d0736af6360d44b5"
+    },
+    {
+      "claim": 5,
+      "path": ".openresearch/artifacts/claim_5_gaussian_comparators/verifier_output.json",
+      "sha256": "0e1431b5e248356de074ecc59b7951726f204a3f02b01b933f4246f27d377354"
+    },
+    {
+      "claim": "all",
+      "path": "outputs/full/summary.json",
+      "sha256": "4c6a293299b0cd98f6d6a888ab70808d0611c21f77e5a14ab6affbd2f5fb7d1f"
+    },
+    {
+      "claim": "all",
+      "path": "outputs/full/theorem_checks_summary.json",
+      "sha256": "635673c5ba474e010c35c2296d822be2e957fa2c00e7b0df1a0933363a5fff58"
+    },
+    {
+      "claim": "all",
+      "path": "outputs/full/proof_certificate.json",
+      "sha256": "971c4bd03f629fd5fc899f5a949f539660356ccd8575471df3060c82dd69409e"
+    }
+  ]
+}

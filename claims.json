@@ -1,8 +1,195 @@
 {
-  "lq8fNVME8v": [
-    {"text": "Minimum-distance summaries provide a plug-in robust neural posterior estimation method that adapts test-time summaries independently of pretrained NPE using maximum mean discrepancy.", "status": "unverified"},
-    {"text": "The algorithm is implemented efficiently with random Fourier feature approximations, yielding a lightweight, model-free test-time adaptation procedure.", "status": "unverified"},
-    {"text": "The method demonstrates substantial robustness gains with minimal additional overhead.", "status": "unverified"},
-    {"text": "Theoretical guarantees for the robustness of the algorithm are provided.", "status": "unverified"}
+  "paper": {
+    "title": "Minimum Distance Summaries for Robust Neural Posterior Estimation",
+    "authors": [
+      "Sherman Khoo",
+      "Dennis Prangle",
+      "Song Liu",
+      "Mark Beaumont"
+    ],
+    "arxiv": "2602.09161v2",
+    "openreview": "lq8fNVME8v",
+    "url": "https://arxiv.org/abs/2602.09161"
+  },
+  "repository": {
+    "canonical_name": "icml26-minimum-distance-summaries",
+    "canonical_url": "https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries",
+    "previous_name": "icml26-repro-lq8fNVME8v-mds",
+    "maintainer": "MachineLearning-Nerd"
+  },
+  "challenge_claims_exact": [
+    {
+      "text": "Minimum-distance summaries provide a plug-in robust neural posterior estimation method that adapts test-time summaries independently of pretrained NPE using maximum mean discrepancy.",
+      "status": "historical_source_contract"
+    },
+    {
+      "text": "The algorithm is implemented efficiently with random Fourier feature approximations, yielding a lightweight, model-free test-time adaptation procedure.",
+      "status": "historical_source_contract"
+    },
+    {
+      "text": "The method demonstrates substantial robustness gains with minimal additional overhead.",
+      "status": "historical_source_contract"
+    },
+    {
+      "text": "Theoretical guarantees for the robustness of the algorithm are provided.",
+      "status": "historical_source_contract"
+    }
+  ],
+  "collection_status": "VERIFIED_SCOPED_WITH_FALSIFIED_THEOREMS_AND_BLOCKED_CRYO_CLAIM",
+  "last_recorded_live_judged_score": "7/12",
+  "forecast": {
+    "range": "9-10/12",
+    "is_judge_result": false
+  },
+  "claims": [
+    {
+      "id": 1,
+      "title": "Frozen plug-in separation",
+      "paper_scope": "MDS adapts the query summary at test time while keeping the pretrained NPE fixed.",
+      "verdict": "VERIFIED_SCOPED",
+      "producers": [
+        "reproduction/reproduce_mds.py",
+        "reproduction/neural_npe_upgrade.py",
+        "reproduction/integrate_neural_upgrade.py"
+      ],
+      "evidence": [
+        "outputs/full/neural_upgrade_summary.json",
+        "outputs/full/neural_gaussian_aggregate.csv",
+        "outputs/full/neural_oup_aggregate.csv",
+        ".openresearch/artifacts/claim_1_plugin_separation"
+      ],
+      "independent_checks": [
+        "reproduction/test_reproduction.py",
+        ".openresearch/artifacts/claim_1_plugin_separation/independent_checker_output.json"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_1_plugin_separation/negative_control_output.json"
+      ],
+      "result": "Frozen posterior hashes and 550 paired adaptations preserve the offline NPE while changing only the test-time summary.",
+      "limitation": "The evidence covers the recorded Gaussian and OUP mechanisms, not every paper task."
+    },
+    {
+      "id": 2,
+      "title": "RFF/MSE/L-BFGS implementation",
+      "paper_scope": "MDS uses Gaussian-kernel MMD, random Fourier features, an MSE-trained decoder embedding, and test-time L-BFGS.",
+      "verdict": "VERIFIED_SCOPED",
+      "producers": [
+        "reproduction/reproduce_mds.py",
+        "reproduction/audit_dimension_general_proof.py"
+      ],
+      "evidence": [
+        "outputs/full/source_and_code_audit.json",
+        "outputs/full/experiment_summary.json",
+        ".openresearch/artifacts/claim_2_rff_implementation"
+      ],
+      "independent_checks": [
+        "reproduction/test_reproduction.py",
+        ".openresearch/artifacts/claim_2_rff_implementation/independent_checker_output.json"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_2_rff_implementation/negative_control_output.json"
+      ],
+      "result": "The pinned official RFF path, strong-Wolfe L-BFGS signatures, CPU timing, and exact-versus-RFF comparisons pass.",
+      "limitation": "The official repository default is 256 RFFs; this reproduction explicitly uses the paper's 512-RFF setting."
+    },
+    {
+      "id": 3,
+      "title": "Theorem 4.1 robustness bound",
+      "paper_scope": "Under Appendix A.1 assumptions, the posterior-KL influence bound is finite.",
+      "verdict": "FALSIFIED_AS_WRITTEN",
+      "producers": [
+        "reproduction/campaign/theorem_4_1_counterexample.py",
+        "reproduction/campaign/run_theorem_4_1.py",
+        "reproduction/campaign/check_theorem_4_1_independent.py"
+      ],
+      "evidence": [
+        ".openresearch/artifacts/claim_3_theorem_4_1/formal_results.json",
+        ".openresearch/artifacts/claim_3_theorem_4_1/formal_runtime.json"
+      ],
+      "independent_checks": [
+        ".openresearch/artifacts/claim_3_theorem_4_1/formal_independent_checker_output.json"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_3_theorem_4_1/formal_negative_control_output.json"
+      ],
+      "result": "All ten printed assumptions pass, but a zero target Hessian creates a quartically flat objective; KL divided by contamination diverges.",
+      "limitation": "This is an exact counterexample to the universal statement, not a claim that all practical MDS objectives are flat."
+    },
+    {
+      "id": 4,
+      "title": "Theorem 4.2 consistency transfer",
+      "paper_scope": "Under Appendix A.3 assumptions, original-summary posterior weak consistency implies MDS-summary posterior weak consistency.",
+      "verdict": "FALSIFIED_AS_WRITTEN",
+      "producers": [
+        "reproduction/campaign/theorem_4_2_counterexample.py",
+        "reproduction/campaign/run_theorem_4_2.py",
+        "reproduction/campaign/check_theorem_4_2_independent.py"
+      ],
+      "evidence": [
+        ".openresearch/artifacts/claim_4_theorem_4_2/formal_result.json",
+        ".openresearch/artifacts/claim_4_theorem_4_2/formal_results.csv"
+      ],
+      "independent_checks": [
+        ".openresearch/artifacts/claim_4_theorem_4_2/formal_independent_checker_output.json"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_4_theorem_4_2/formal_negative_control_output.json"
+      ],
+      "result": "The original posterior contracts while MDS selects an escaping point mass; bounded ISPD does not supply the stronger C0 topology needed for the claimed transfer.",
+      "limitation": "The result targets the theorem's universal assumptions and does not invalidate correctly specified compact or C0-controlled applications."
+    },
+    {
+      "id": 5,
+      "title": "Gaussian all-comparator robustness gloss",
+      "paper_scope": "Audit target imported from the challenge/release wording: MDS beats every named comparator below 40% contamination.",
+      "verdict": "FALSIFIED_STRONGER_GLOSS",
+      "producers": [
+        "reproduction/campaign/gaussian_full_comparators.py",
+        "reproduction/campaign/run_gaussian_comparators.py",
+        "reproduction/campaign/check_gaussian_comparators.py"
+      ],
+      "evidence": [
+        "outputs/full/gaussian_trials.csv",
+        "outputs/full/gaussian_aggregate.csv",
+        ".openresearch/artifacts/claim_5_gaussian_comparators/raw_trials.csv",
+        ".openresearch/artifacts/claim_5_gaussian_comparators/aggregate.csv"
+      ],
+      "independent_checks": [
+        ".openresearch/artifacts/claim_5_gaussian_comparators/independent_checker_output.json",
+        ".openresearch/artifacts/claim_5_gaussian_comparators/verifier_output.json"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_5_gaussian_comparators/negative_control_output.json"
+      ],
+      "result": "MDS beats NPE and NNPE through 30% contamination, but NPE-OR is better at 30%: MMD 1.0626 versus 2.0756, paired 95% interval [-1.3538, -0.6719].",
+      "limitation": "The verdict is deliberately limited to the stronger all-comparator gloss and does not reject the paper's qualified in-general wording."
+    },
+    {
+      "id": 6,
+      "title": "1024-dimensional Cryo-EM result",
+      "paper_scope": "The Cryo-EM experiment achieves the paper's displayed large RMSE reductions.",
+      "verdict": "BLOCKED_REPRODUCTION_REQUIRED",
+      "producers": [
+        "reproduction/campaign/cryo_full_reproduction.py",
+        "reproduction/campaign/run_cryo_claim.py",
+        "reproduction/campaign/cryo_figure4_reconstruction.py",
+        "reproduction/campaign/cryo_falsification_audit.py"
+      ],
+      "evidence": [
+        ".openresearch/artifacts/claim_6_cryo_em",
+        ".trackio/logbook/pages/current-cryo-em"
+      ],
+      "independent_checks": [
+        ".trackio/logbook/pages/current-cryo-em",
+        "reproduction/campaign/check_cryo_claim.py",
+        "reproduction/campaign/verify_cryo_claim.py"
+      ],
+      "controls": [
+        "reproduction/campaign/verify_cryo_falsification.py",
+        "reproduction/campaign/check_cryo_falsification.py"
+      ],
+      "result": "The paper's vector Figure 4 reports 58–63% reductions, while one exact-scale retraining reports 2.8–8.5%; four routes do not establish a defensible final verdict.",
+      "limitation": "The authors' exact checkpoint and Figure 4 training/test data realization are unavailable."
+    }
   ]
 }

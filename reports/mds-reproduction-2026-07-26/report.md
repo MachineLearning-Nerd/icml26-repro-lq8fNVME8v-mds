@@ -1,4 +1,4 @@
-# Minimum Distance Summaries — claim-by-claim CPU reproduction
+# Minimum Distance Summaries — ICML 2026 claim-by-claim CPU reproduction
 
 ![Full Gaussian comparator reproduction](images/headline-gaussian-comparators.png)
 
@@ -136,7 +136,7 @@ explicit universal quantifier over retraining realizations.
 ## Experiment lineage and reproducibility
 
 The scientific winner is
-[`orx/integrated-claims-1-6-cumulative-evidence`](https://github.com/MachineLearning-Nerd/icml26-repro-lq8fNVME8v-mds/tree/orx/integrated-claims-1-6-cumulative-evidence)
+[`release/integrated-claims-1-6`](https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries/tree/release/integrated-claims-1-6)
 at `41ec2e32d267e6944c04cc766c495f59a3071fdb`. Its formal run
 `fd04a075-47dd-487c-a947-c6972227a67b` completed in 1,709.11 seconds,
 exposed 64 logical CPUs for an estimated six useful cores, and used no GPU.
@@ -147,12 +147,12 @@ listed compute cost was $0.1368.
 
 The important branches are:
 
-- [exact theorem integration](https://github.com/MachineLearning-Nerd/icml26-repro-lq8fNVME8v-mds/tree/orx/integrated-exact-theorem-falsifications);
-- [full Gaussian comparators](https://github.com/MachineLearning-Nerd/icml26-repro-lq8fNVME8v-mds/tree/orx/full-gaussian-comparator-reproduction);
-- [full Cryo-EM route](https://github.com/MachineLearning-Nerd/icml26-repro-lq8fNVME8v-mds/tree/orx/full-1024d-cryo-em-reproduction);
-- [discrete-state Cryo route](https://github.com/MachineLearning-Nerd/icml26-repro-lq8fNVME8v-mds/tree/orx/cryo-discrete-state-posterior-verification);
-- [Figure 4 reconstruction](https://github.com/MachineLearning-Nerd/icml26-repro-lq8fNVME8v-mds/tree/orx/cryo-figure-4-vector-reconstruction);
-- [mandatory falsification qualification](https://github.com/MachineLearning-Nerd/icml26-repro-lq8fNVME8v-mds/tree/orx/cryo-mandatory-falsification-qualification).
+- [exact theorem integration](https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries/tree/proof/claims-3-4-integrated);
+- [full Gaussian comparators](https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries/tree/experiment/gaussian-full-comparators);
+- [full Cryo-EM route](https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries/tree/experiment/cryo-em-full-1024d);
+- [discrete-state Cryo route](https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries/tree/experiment/cryo-discrete-posterior);
+- [Figure 4 reconstruction](https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries/tree/audit/cryo-figure-4-reconstruction);
+- [mandatory falsification qualification](https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries/tree/audit/cryo-falsification-qualification).
 
 Two Gaussian setup failures were environmental and produced no claim
 evidence: one image lacked `uv`, and the authors' eager initializer imported

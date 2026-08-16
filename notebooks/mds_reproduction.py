@@ -202,7 +202,7 @@ def _(mo):
         `3b813e9dc810b8b82abaac4631da3765e87951bcfbd1ad557d491697788c91bb`.
 
         See the repository's
-        [illustrated report](https://github.com/MachineLearning-Nerd/icml26-repro-lq8fNVME8v-mds/blob/master/reports/mds-reproduction-2026-07-26/report.md)
+        [illustrated report](https://github.com/MachineLearning-Nerd/icml26-minimum-distance-summaries/blob/main/reports/mds-reproduction-2026-07-26/report.md)
         and the existing
         [Hugging Face logbook](https://huggingface.co/spaces/DineshAI/lq8fNVME8v)
         for executable verifiers, raw data, controls, limitations, and exact

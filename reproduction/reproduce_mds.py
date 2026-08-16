@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CPU-only reproduction of the four ICML challenge claims for MDS.
+"""CPU-only reproduction of the Gaussian MDS core and source checks.
 
 The empirical experiment deliberately exercises the authors' isolated RFF
 adapter module, while the theorem checks use closed-form Gaussian/RBF special
@@ -82,7 +82,9 @@ def git_output(*args: str) -> str:
 
 
 def source_audit(out: Path) -> dict:
-    claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))[PAPER_ID]
+    claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))[
+        "challenge_claims_exact"
+    ]
     tex_lines = PAPER_TEX.read_text(encoding="utf-8").splitlines()
 
     def locate(needle: str) -> int:
